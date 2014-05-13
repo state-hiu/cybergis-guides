@@ -53,7 +53,9 @@ Make sure to reboot the server at this point to ensure the Ruby enviornment is s
 cybergis-script-init-rogue.sh prod gems
 ```
 
-Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before install GeoNode itself.  Do not forget to include the fully qualified domain name (including subdomains) for the <fqdn> parameter, such as hiu-maps.net or example.com.  Do not include a port, protocol, or context path.
+Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before install GeoNode itself.
+
+Do **not** forget to include the fully qualified domain name (including subdomains) for the <fqdn> parameter, such as hiu-maps.net or example.com.  Do **not** include a port, protocol, or context path.
 
 ```
 cybergis-script-init-rogue.sh prod geonode <fqdn>
