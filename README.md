@@ -1,12 +1,15 @@
 cybergis-guides
 ========================
 
+| Specifications: | [GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-1.0.md) | 
+| ---- |  ---- |
+
 ## CyberGIS
 The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
 
 ## Usage
 
-Use these guides to manage a CyberGIS infrastructure and execute standard tasks.
+Use these guides to learn how to launch and manage a CyberGIS infrastructure and execute standard tasks.
 
 
 ## Contributing
