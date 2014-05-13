@@ -1,7 +1,7 @@
 cybergis-guides
 ========================
 
-| Specifications: | [GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-1.0.md) | 
+| Specifications: | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-1.0.md) | 
 | ---- |  ---- |
 
 ## CyberGIS
