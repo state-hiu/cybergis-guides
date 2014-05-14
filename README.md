@@ -1,7 +1,7 @@
 cybergis-guides
 ========================
 
-| Specifications: | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) | 
+| Guides: | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) | 
 | ---- |  ---- |
 
 ## CyberGIS
@@ -11,6 +11,11 @@ The Humanitarian Information Unit has been developing a sophisticated geographic
 
 Use these guides to learn how to launch and manage a CyberGIS infrastructure and execute standard tasks.
 
+## Guides
+
+### [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md)
+
+This guide provides instructions for installing and managing a ROGUE GeoNode instance.
 
 ## Contributing
 
