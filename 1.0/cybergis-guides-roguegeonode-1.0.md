@@ -6,7 +6,9 @@ ROGUE GeoNode Guide, Version 1.0
 
 ## Description
 
-This guide provides instructions for installing and managing a ROGUE GeoNode instance.
+This guide provides instructions for installing and managing a ROGUE GeoNode instance.  You can find information about installing a vanilla GeoNode without the advanced data editing and sharing technology at [http://geonode.org/](http://geonode.org/).  You can find more information about ROGUE at [http://rogue.lmnsolutions.com/](http://rogue.lmnsolutions.com/).  
+
+If you find any bugs, in the vanilla GeoNode, please submit them as issues to the GeoNode GitHub repo at [https://github.com/GeoNode/geonode/issues](https://github.com/GeoNode/geonode/issues).  If you find bugs, in the ROGUE GeoNode, please submit them as tickets to the rogue_geonode GitHub repo at: [https://github.com/ROGUE-JCTD/rogue_geonode/issues](https://github.com/ROGUE-JCTD/rogue_geonode/issues).
 
 ## Installation
 
