@@ -88,7 +88,7 @@ cybergis-script-init-rogue.sh prod remote <user:password> <localRepoName> <local
 To add a remote GeoGit repo (server agnostic),
 
 ```
-cybergis-script-init-rogue.sh prod remote2 <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
+cybergis-script-init-rogue.sh prod remote2 <user:password> <repoURL> <remoteName> <remoteURL> <remoteUser> <remotePassword>
 ```
 
 You can confirm the remotes were added successfully, but executing the following command agains the GeoGit Web API.  You should see an xml output of all configured remotes. 
