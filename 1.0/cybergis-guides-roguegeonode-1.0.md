@@ -25,8 +25,8 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 3. Install RVM (Ruby Version Manager)
 4. Install Ruby GEM dependencies
 5. Install GeoNode
-6. Add external servers to baseline (WMS and TMS)
-6. Add GeoGit remotes to baseline (other GeoNodes)
+6. Add external servers to baseline (GeoNodes, WMS, and TMS)
+6. Add GeoGit remotes to baseline (other ROGUE GeoNodes)
 
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
