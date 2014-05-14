@@ -39,7 +39,7 @@ git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 ```
 
-Log out completely and log back in.  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.
+Log out completely and log back in.  Remember to become root again (`sudo su -`).  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.
 
 ```
 cybergis-script-init-rogue.sh prod user
