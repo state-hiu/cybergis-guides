@@ -59,7 +59,7 @@ Make sure to reboot the server at this point to ensure the Ruby enviornment is s
 cybergis-script-init-rogue.sh prod gems
 ```
 
-Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before install GeoNode itself.
+Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 Do **not** forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com.  Do **not** include a port, protocol, or context path.
 
@@ -71,10 +71,31 @@ After installation is complete, go to your GeoNode in a browser to confirm it in
 
 If you add external servers to the baseline, they'll, by default, appear in MapLoom, without requiring each user to add the url manually for each new map.  The following command will add the given server infromation to the settings.py file at the end of  `/var/lib/geonode/rogue_geonode/rogue_geonode/settings.py`.
 
-To add a geonode server, include the protocol, domain, and port, for example `cybergis-script-init-rogue.sh prod server geonode http://example.com`.  The included parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-init-rogue.sh prod server wms http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-init-rogue.sh prod server tmns http://hiu-maps.net/hot/1.0.0`.
+To add a geonode server, include the protocol, domain, and port, for example `cybergis-script-init-rogue.sh prod server geonode ExampleName http://example.com`.  The included parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-init-rogue.sh prod server wms ExampleName http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-init-rogue.sh prod server tms ExampleName http://hiu-maps.net/hot/1.0.0`.
 
 ```
-cybergis-script-init-rogue.sh $INIT_ENV $INIT_CMD [geonode|wms|tms] <name> <url>
+cybergis-script-init-rogue.sh prod server [geonode|wms|tms] <name> <url>
 ```
+
+You'll want to install remotes, next.  Remotes enable users to sync data among multiple ROGUE GeoNode instances.  You can add remotes using two commands.  The first command uses a url to the remote Geonode and remote repo name.  The second command uses a url to the repo directly.  The second command can be used once other implementations of the GeoGit Web API [http://geogit.org/docs/interaction/web-api.html](http://geogit.org/docs/interaction/web-api.html) are created.
+
+To add a remote GeoNode use, 
+
+```
+cybergis-script-init-rogue.sh prod remote <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
+```
+
+To add a remote GeoGit repo (server agnostic),
+
+```
+cybergis-script-init-rogue.sh prod remote2 <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
+```
+
+You can confirm the remotes were added successfully, but executing the following command agains the GeoGit Web API.  You should see an xml output of all configured remotes. 
+
+```
+curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName/remote?list=true&verbose=true'
+```
+
 
 
