@@ -29,13 +29,13 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 4. Install Ruby GEM dependencies
 5. Install GeoNode
 6. Add external servers to baseline (GeoNodes, WMS, and TMS) 
-6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE**)
+6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
 7. Add post-commit AWS SNS hooks to repos.
 
 
 ###Kown Issues
 1.  This scipt is currently incompatible with the most recent GeoGit Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
-2.  GeoGit hooks are broken.  You cannot connect the hooks to GeoServer.  Step 7 will not break and you'll be able to test AWS SNS from the command line.
+2.  The SNS hooks are not added to any repository .geogit/hooks directories, since the Geoserver GeoGit hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
 
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
@@ -86,7 +86,7 @@ To add a geonode server, include the protocol, domain, and port, for example `cy
 cybergis-script-init-rogue.sh prod server [geonode|wms|tms] <name> <url>
 ```
 
-**Adding remotes is currently broken.  DO NOT EXECUTE**
+**Adding remotes from this script is currently broken.  Use MapLoom instead.  DO NOT EXECUTE**
 
 You'll want to install remotes, next.  Remotes enable users to sync data among multiple ROGUE GeoNode instances.  You can add remotes using two commands.  The first command uses a url to the remote Geonode and remote repo name.  The second command uses a url to the repo directly.  The second command can be used once other implementations of the GeoGit Web API [http://geogit.org/docs/interaction/web-api.html](http://geogit.org/docs/interaction/web-api.html) are created.
 
@@ -108,7 +108,7 @@ You can confirm the remotes were added successfully, but executing the following
 curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName/remote?list=true&verbose=true'
 ```
 
-**Adding remotes is currently broken.  DO NOT EXECUTE**
+**Adding remotes from this script is currently broken.  Use MapLoom instead.  DO NOT EXECUTE**
 
 To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
 
