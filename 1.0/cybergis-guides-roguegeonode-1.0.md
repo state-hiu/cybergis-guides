@@ -6,7 +6,7 @@ ROGUE GeoNode Guide, Version 1.0
 
 ## Description
 
-This guide sections for executing commons tasks when managing a ROGUE GeoNode.
+This guide provides instructions for installing and managing a ROGUE GeoNode instance.
 
 ## Installation
 
