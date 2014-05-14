@@ -86,6 +86,8 @@ To add a geonode server, include the protocol, domain, and port, for example `cy
 cybergis-script-init-rogue.sh prod server [geonode|wms|tms] <name> <url>
 ```
 
+**Adding remotes is currently broken.  DO NOT EXECUTE**
+
 You'll want to install remotes, next.  Remotes enable users to sync data among multiple ROGUE GeoNode instances.  You can add remotes using two commands.  The first command uses a url to the remote Geonode and remote repo name.  The second command uses a url to the repo directly.  The second command can be used once other implementations of the GeoGit Web API [http://geogit.org/docs/interaction/web-api.html](http://geogit.org/docs/interaction/web-api.html) are created.
 
 To add a remote GeoNode use, 
@@ -105,6 +107,8 @@ You can confirm the remotes were added successfully, but executing the following
 ```
 curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName/remote?list=true&verbose=true'
 ```
+
+**Adding remotes is currently broken.  DO NOT EXECUTE**
 
 To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
 
