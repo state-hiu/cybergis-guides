@@ -29,8 +29,14 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 4. Install Ruby GEM dependencies
 5. Install GeoNode
 6. Add external servers to baseline (GeoNodes, WMS, and TMS) 
-6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (CURRENTLY BROKEN DO NOT EXECUTE)
-7. Add post-commit AWS SNS hooks to repos. (CURRENTLY BROKEN DO NOT EXECUTE)
+6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE**)
+7. Add post-commit AWS SNS hooks to repos.
+
+
+###Kown Issues
+1.  The GeoGit Web API is broken.  You cannot add remotes correctly.  **Do not execute step 6.**
+2.  GeoGit hooks are broken.  You cannot connect the hooks to GeoServer.  Step 7 will not break and you'll be able to test AWS SNS from the command line.
+
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
 
