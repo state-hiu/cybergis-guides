@@ -13,7 +13,7 @@ guide itself, please submit them to this repo at [https://github.com/state-hiu/c
 
 ## Installation
 
-Launching a ROGUE GeoNode only requires a few stimple steps.  The installation process is relatively painless on a clean build and can be completed in less than 30 minutes, usually 15 minutes.
+Launching a ROGUE GeoNode only requires a few simple steps.  The installation process is relatively painless on a clean build and can be completed in less than 30 minutes, usually 15 minutes.
 
 These instructions were written for deployment on the Ubuntu operating system, but may work on other Linux variants.  ROGUE will not install on Ubuntu 14.04 yet as a few dependencies have not been upgraded yet.  We recommend using Ubuntu 12.04.
 
