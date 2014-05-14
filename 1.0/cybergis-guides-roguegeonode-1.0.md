@@ -28,9 +28,9 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 3. Install RVM (Ruby Version Manager)
 4. Install Ruby GEM dependencies
 5. Install GeoNode
-6. Add external servers to baseline (GeoNodes, WMS, and TMS)
-6. Add GeoGit remotes to baseline (other ROGUE GeoNodes)
-
+6. Add external servers to baseline (GeoNodes, WMS, and TMS) 
+6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (CURRENTLY BROKEN DO NOT EXECUTE)
+7. Add post-commit AWS SNS hooks to repos. (CURRENTLY BROKEN DO NOT EXECUTE)
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
 
@@ -100,5 +100,23 @@ You can confirm the remotes were added successfully, but executing the following
 curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName/remote?list=true&verbose=true'
 ```
 
+To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
+
+```
+cybergis-script-init-rogue.sh prod aws
+```
+
+To add the relevant settings to the GeoNode settings.py file, run the following command.  You'll most likely need to wrap the sns_topic string with double or single quotes to correctly pass the arguments.
+
+```
+cybergis-script-init-rogue.sh prod sns <aws_access_key_id> <aws_secret_access_key> <sns_topic>
+```
+
+You can test SNS with the following code block.  You need to use GeoNode's python interpreter to correctly load the GeoNode settings from the command line.
+
+```
+export DJANGO_SETTINGS_MODULE=rogue_geonode.settings
+/var/lib/geonode/bin/python /opt/cybergis-scripts.git/lib/rogue/post_commit_hook.py <commit_message>
+```
 
 
