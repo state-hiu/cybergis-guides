@@ -23,7 +23,7 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 
 Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.
 
-1. Install CyberGIS Scripts [Jump](#step-1)
+1. Install CyberGIS Scripts [[Jump]](#step-1)
 2. Create ROGUE user account.
 3. Install RVM (Ruby Version Manager)
 4. Install Ruby GEM dependencies
