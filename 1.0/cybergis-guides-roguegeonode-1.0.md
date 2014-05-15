@@ -21,7 +21,7 @@ You'll want to complete all the below steps as the root (with login shell and en
 
 You can **rerun** most steps, if a network connection drops, e.g., during installation of a Ruby GEM dependency.
 
-Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.
+Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 6 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Create ROGUE user account.  [[Jump]](#step-2)
@@ -29,9 +29,9 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 4. Install Ruby GEM dependencies.  [[Jump]](#step-4)
 5. Install GeoNode.  [[Jump]](#step-5)
 6. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
-6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
-7. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-8)
-8. Add GeoGit sync cron jobs.  [[Jump]](#step-9)
+7. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
+8. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-8)
+9. Add GeoGit sync cron jobs.  [[Jump]](#step-9)
 
 
 ###Kown Issues
