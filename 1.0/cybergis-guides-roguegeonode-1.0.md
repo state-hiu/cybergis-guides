@@ -158,7 +158,7 @@ cybergis-script-init-rogue.sh prod cron2 <user> <password> <localRepoName> <remo
 The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example.
 
 ```
-cybergis-script-init-rogue.sh prod cron2 admin admin 'geonode:copeco_td_repo' 'AWS' '*/5 * * * *'
+cybergis-script-init-rogue.sh prod cron2 admin admin 'geonode:incidents_repo' 'AWS' '*/5 * * * *'
 ```
 
 The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  You can double check that the commands executed properly, manually adds sync commands, or otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a primary benfit of GeoGit--it effectively uses network bandwith.
