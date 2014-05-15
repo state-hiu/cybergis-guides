@@ -155,7 +155,7 @@ You can also sync with a custom interval using standard crontab syntax.  See the
 cybergis-script-init-rogue.sh prod cron2 <user> <password> <localRepoName> <remoteName> <frequency>
 ```
 
-The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example.
+The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGit sync every 5 minutes.
 
 ```
 cybergis-script-init-rogue.sh prod cron2 admin admin 'geonode:incidents_repo' 'AWS' '*/5 * * * *'
