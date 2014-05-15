@@ -31,12 +31,14 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 6. Add external servers to baseline (GeoNodes, WMS, and TMS) 
 6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
 7. Add post-commit AWS SNS hooks to repos.
+8. Add GeoGit sync cron jobs.
 
 
 ###Kown Issues
 1.  This scipt is currently incompatible with the most recent GeoGit Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
 2.  The SNS hooks are not added to any repository .geogit/hooks directories, since the Geoserver GeoGit hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
 
+###Step 1
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
 
