@@ -23,15 +23,15 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 
 Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.
 
-1. Install CyberGIS Scripts [[Jump]](#step-1)
-2. Create ROGUE user account.
-3. Install RVM (Ruby Version Manager)
-4. Install Ruby GEM dependencies
-5. Install GeoNode
-6. Add external servers to baseline (GeoNodes, WMS, and TMS) 
+1. Install CyberGIS Scripts.  [[Jump]](#step-1)
+2. Create ROGUE user account.  [[Jump]](#step-2)
+3. Install RVM (Ruby Version Manager).  [[Jump]](#step-3)
+4. Install Ruby GEM dependencies.  [[Jump]](#step-4)
+5. Install GeoNode.  [[Jump]](#step-5)
+6. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
 6. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
-7. Add post-commit AWS SNS hooks to repos.
-8. Add GeoGit sync cron jobs.
+7. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-7)
+8. Add GeoGit sync cron jobs.  [[Jump]](#step-8)
 
 
 ###Kown Issues
@@ -50,12 +50,15 @@ git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 ```
 
+###Step 2
+
 Log out completely and log back in.  Remember to become root again (`sudo su -`).  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.  You don't execute any commands as the "rogue" user during installation.  Execute every command as root.
 
 ```
 cybergis-script-init-rogue.sh prod user
 ```
 
+###Step 3
 You're still root right?  We now need to install RVM (Ruby Version Manager).  RVM is used to install Ruby GEM dependencies.  Chef also uses ruby to manage the integration of custom ROGUE components with a vanilla GeoNode.
 
 ```
@@ -63,6 +66,7 @@ cybergis-script-init-rogue.sh prod rvm
 reboot
 ```
 
+###Step 4
 Make sure to reboot the server at this point to ensure the Ruby enviornment is set up properly.  **Do not just log out and log back in**.  Next, install the Ruby GEM dependencies.  The GEM dependencies that need to be installed at this point are Ruby, chef, solve, nokogiri, and berkshelf.  The following command will install them all.  Remember to become root again (`sudo su -`).  
 
 
@@ -70,6 +74,7 @@ Make sure to reboot the server at this point to ensure the Ruby enviornment is s
 cybergis-script-init-rogue.sh prod gems
 ```
 
+###Step 5
 Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 Do **not** forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com.  Do **not** include a port, protocol, or context path.
