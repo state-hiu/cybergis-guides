@@ -146,13 +146,13 @@ export DJANGO_SETTINGS_MODULE=rogue_geonode.settings
 Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very useful when syncing large datasets in primarily one direction.  For example, pushing a large amount of data to a field office at 6am before staff arrive at work.  The script will only sync when there are no conflicts.  Support for automated notifications when the sync fails using AWS SNS will be implemented soon.  You can sync at a standard hourly, daily, weekly, or monthly interval using the following command.  You need to add a remote via MapLoom or step 7 (once the script is fixed) before hand.
 
 ```
-Usage: cybergis-script-init-rogue.sh $INIT_ENV $INIT_CMD <user> <password> <localRepoName> <remoteName> [hourly|daily|weekly|monthly]
+cybergis-script-init-rogue.sh prod cron <user> <password> <localRepoName> <remoteName> [hourly|daily|weekly|monthly]
 ```
 
 You can also sync with a custom interval using standard crontab syntax.  See the relevant wikipedia article for more information [http://en.wikipedia.org/wiki/Cron](http://en.wikipedia.org/wiki/Cron).
 
 ```
-Usage: cybergis-script-init-rogue.sh $INIT_ENV $INIT_CMD <user> <password> <localRepoName> <remoteName> <frequency>
+Usage: cybergis-script-init-rogue.sh prod cron2 <user> <password> <localRepoName> <remoteName> <frequency>
 ```
 
 The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example.
