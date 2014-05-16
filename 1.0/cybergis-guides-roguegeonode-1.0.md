@@ -143,22 +143,24 @@ export DJANGO_SETTINGS_MODULE=rogue_geonode.settings
 ```
 
 ###Step 9
-Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very useful when syncing large datasets in primarily one direction.  For example, pushing a large amount of data to a field office at 6am before staff arrive at work.  The script will only sync when there are no conflicts.  Support for automated notifications when the sync fails using AWS SNS will be implemented soon.  You can sync at a standard hourly, daily, weekly, or monthly interval using the following command.  You need to add a remote via MapLoom or step 7 (once the script is fixed) before hand.
+Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very useful when syncing large datasets in primarily one direction.  For example, pushing a large amount of data to a field office at 6am before staff arrive at work.  The script will also help organizations receive updtes to their layers from others without having to share their own propriety information.  The script will only sync when there are no conflicts.  Support for automated notifications when the sync fails using AWS SNS will be implemented soon.  You can sync at a standard hourly, daily, weekly, or monthly interval using the following command.  You need to add a remote via MapLoom or step 7 (once the script is fixed) before hand.
+
+You can execute a push, pull or two-way (duplex) cron job.  The three options for direction are: `push, pull, and duplex`.
 
 ```
-cybergis-script-init-rogue.sh prod cron <user> <password> <localRepoName> <remoteName> [hourly|daily|weekly|monthly]
+cybergis-script-init-rogue.sh prod cron <direction> <user> <password> <localRepoName> <remoteName> [hourly|daily|weekly|monthly]
 ```
 
 You can also sync with a custom interval using standard crontab syntax.  See the relevant wikipedia article for more information [http://en.wikipedia.org/wiki/Cron](http://en.wikipedia.org/wiki/Cron).
 
 ```
-cybergis-script-init-rogue.sh prod cron2 <user> <password> <localRepoName> <remoteName> <frequency>
+cybergis-script-init-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <frequency>
 ```
 
 The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGit sync every 5 minutes.
 
 ```
-cybergis-script-init-rogue.sh prod cron2 admin admin 'geonode:incidents_repo' 'AWS' '*/5 * * * *'
+cybergis-script-init-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' '*/5 * * * *'
 ```
 
 The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  You can double check that the commands executed properly, manually adds sync commands, or otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGit--it effectively uses network bandwith.
