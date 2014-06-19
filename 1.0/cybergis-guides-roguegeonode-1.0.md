@@ -148,19 +148,19 @@ Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very
 You can execute a push, pull, or two-way (duplex) cron job.  The three options for direction are: `push, pull, and duplex`.
 
 ```
-cybergis-script-init-rogue.sh prod cron <direction> <user> <password> <localRepoName> <remoteName> [hourly|daily|weekly|monthly]
+cybergis-script-init-rogue.sh prod cron <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> [hourly|daily|weekly|monthly]
 ```
 
 You can also sync with a custom interval using standard crontab syntax.  See the relevant wikipedia article for more information [http://en.wikipedia.org/wiki/Cron](http://en.wikipedia.org/wiki/Cron).
 
 ```
-cybergis-script-init-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <frequency>
+cybergis-script-init-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> <frequency>
 ```
 
 The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGit sync every 5 minutes.
 
 ```
-cybergis-script-init-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' '*/5 * * * *'
+cybergis-script-init-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' dummy dummy@example.com '*/5 * * * *'
 ```
 
 The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  The concurrent commands execute in order of when they were added.  You can double check that the commands executed properly, manually adds sync commands, remove commands, ior otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGit--it effectively uses network bandwith.
