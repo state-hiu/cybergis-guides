@@ -1,8 +1,8 @@
 cybergis-guides
 ========================
 
-| Guides: | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) | 
-| ---- |  ---- |
+| Guides: | [Vanilla GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-1.0.md) | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) |  [OpenGeo Suite](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-1.0.md) |
+| ---- |  ---- | ---- | ---- |
 
 ## CyberGIS
 The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
@@ -13,9 +13,17 @@ Use these guides to learn how to launch and manage a CyberGIS infrastructure and
 
 ## Guides
 
+### [Vanilla GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-1.0.md)
+
+This guide provides instructions for installing and managing a vanilla GeoNode (plain community GeoNode) instance.
+
 ### [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md)
 
 This guide provides instructions for installing and managing a ROGUE GeoNode instance.
+
+### [OpenGeo Suite](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-1.0.md)
+
+This guide provides instructions for installing and managing a OpenGeo Suite instance.
 
 ## Contributing
 
