@@ -77,9 +77,12 @@ Make sure to reboot the server at this point to ensure the Ruby enviornment is s
 cybergis-script-init-rogue.sh prod gems
 ```
 
+###Step 5.
 
-####Step 5.
-To install PostGIS on a PostgreSQl AWS RDS Database take the following steps.  Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
+You have a lot of flexibility in deciding how to configure your PostGIS Database.  For basic installations where the database and web server are on the same instance, you can skip this step.  This guide will explain how to set up PostGIS in AWS RDS and how to initialize a PostGIS backend in a separate instance.
+
+####Step 5a.
+In step 5a, you can install PostGIS in AWS RDS.  To install PostGIS on a PostgreSQl AWS RDS Database take the following steps.  Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
 
 ```
 psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
@@ -110,6 +113,10 @@ SELECT exec('ALTER TABLE ' || quote_ident(s.nspname) || '.' || quote_ident(s.rel
     relkind IN ('r','S','v') ORDER BY relkind = 'S')
 s;  
 ```
+
+####Step 5b.
+
+In step 5b, you can install the PostGIS backend on a separate virutal machine or instance.
 
 ###Step 6
 
