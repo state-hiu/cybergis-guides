@@ -99,6 +99,7 @@ create extension postgis_tiger_geocoder;
 create extension postgis_topology;
 alter schema tiger owner to rds_superuser;
 alter schema topology owner to rds_superuser;
+GRANT geonode to postgres;
 ```
 
 Finally execute the following to "transfer ownership of the PostGIS objects to the rds_superuser role".
