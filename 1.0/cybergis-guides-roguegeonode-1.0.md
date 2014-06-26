@@ -86,6 +86,40 @@ cybergis-script-init-rogue.sh prod geonode <fqdn>
 
 After installation is complete, go to your GeoNode in a browser to confirm it installed properly.  The default user and password is admin and admin.  If installation was successful, continue to install baseline servers and remotes.
 
+
+####Step 5a.
+To install PostGIS on a PostgreSQl AWS RDS Database take the following steps.  Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
+
+```
+psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
+```
+
+From within psql execute the following (based on the direction found here: [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS)).
+
+```
+CREATE DATABASE template_postgis ENCODING 'UTF8' TEMPLATE template0;
+\c template_postgis;
+create extension postgis;
+create extension fuzzystrmatch;
+create extension postgis_tiger_geocoder;
+create extension postgis_topology;
+alter schema tiger owner to rds_superuser;
+alter schema topology owner to rds_superuser;
+```
+
+Finally execute the following to "transfer ownership of the PostGIS objects to the rds_superuser role".
+
+```
+CREATE FUNCTION exec(text) returns text language plpgsql volatile AS $f$ BEGIN EXECUTE $1; RETURN $1; END; $f$;
+SELECT exec('ALTER TABLE ' || quote_ident(s.nspname) || '.' || quote_ident(s.relname) || ' OWNER TO rds_superuser')
+  FROM (
+    SELECT nspname, relname
+    FROM pg_class c JOIN pg_namespace n ON (c.relnamespace = n.oid) 
+    WHERE nspname in ('tiger','topology') AND
+    relkind IN ('r','S','v') ORDER BY relkind = 'S')
+s;  
+```
+
 ###Step 6
 
 If you add external servers to the baseline, they'll, by default, appear in MapLoom, without requiring each user to add the url manually for each new map.  The following command will add the given server infromation to the settings.py file at the end of  `/var/lib/geonode/rogue_geonode/rogue_geonode/settings.py`.
