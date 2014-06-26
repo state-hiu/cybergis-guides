@@ -4,7 +4,7 @@ ROGUE GeoNode Guide, Version 1.0
 | Guides: | [Vanilla GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-1.0.md) | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) |  [OpenGeo Suite](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-1.0.md) |
 | ---- |  ---- | ---- | ---- |
 
-#The Guide is undergoing changes to incorporate AWS RDS and sepearting the web and database servers.
+#The Guide is undergoing changes to incorporate AWS RDS and separating the web and database servers.
 
 ## Description
 
