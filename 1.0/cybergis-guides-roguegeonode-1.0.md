@@ -91,28 +91,7 @@ psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 From within psql execute the following (based on the direction found here: [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS)).
 
 ```
-CREATE DATABASE template_postgis ENCODING 'UTF8' TEMPLATE template0;
-\c template_postgis;
-create extension postgis;
-create extension fuzzystrmatch;
-create extension postgis_tiger_geocoder;
-create extension postgis_topology;
-alter schema tiger owner to rds_superuser;
-alter schema topology owner to rds_superuser;
-GRANT geonode to postgres;
-```
-
-Finally execute the following to "transfer ownership of the PostGIS objects to the rds_superuser role".
-
-```
-CREATE FUNCTION exec(text) returns text language plpgsql volatile AS $f$ BEGIN EXECUTE $1; RETURN $1; END; $f$;
-SELECT exec('ALTER TABLE ' || quote_ident(s.nspname) || '.' || quote_ident(s.relname) || ' OWNER TO rds_superuser')
-  FROM (
-    SELECT nspname, relname
-    FROM pg_class c JOIN pg_namespace n ON (c.relnamespace = n.oid) 
-    WHERE nspname in ('tiger','topology') AND
-    relkind IN ('r','S','v') ORDER BY relkind = 'S')
-s;  
+cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 ```
 
 ####Step 5b.
