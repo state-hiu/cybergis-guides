@@ -101,27 +101,30 @@ It is **strongly recommended** for running GeoNode in a production environment t
 
 Another consideration when using AWS RDS is  the maintenance and backup windows.  It is recommended to set these windows for when you expect there to be the lowest activity, such as really early Sunday morning.
 
+Once you've deployed a PostgreSQL RDS instance, you only need to execute the one following command to initialize the database.  The command was built from AWS help docs found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS).  Execute this command from within the GeoNode instance.  Make sure you've configured the RDS DB security group to allow access from the GeoNode instance.
+
 ```
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 ```
 
- Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
+####Step 5b.
+
+**To Be Completed**
+
+In step 5b, you can install the PostGIS backend on a separate virutal machine or instance.
+
+
+Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
 
 ```
 psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 ```
 
-From within psql execute the following (based on the direction found here: [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS)).
-
-
-
-####Step 5b.
-
-In step 5b, you can install the PostGIS backend on a separate virutal machine or instance.
-
 ####step 5c.
 
-For basic installations where the database and web server are on the same instance, you can skip this step.  This guide will explain how to set up PostGIS in AWS RDS and how to initialize a PostGIS backend in a separate instance.
+**To Be Completed**
+
+For basic installations where the database and web server are on the same instance, you
 
 ###Step 6
 
