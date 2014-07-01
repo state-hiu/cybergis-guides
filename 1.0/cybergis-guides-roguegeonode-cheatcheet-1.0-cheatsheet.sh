@@ -1,5 +1,5 @@
 #!/bin/bash
-##This is a cheat sheet for the ROGUE GeoNode Guide.
+##This is a cheat sheet for the ROGUE GeoNode Guide.  This is designed as a single bash script.  You'll still need to execute lines one by one.
 
 #Step 1
 sudo su -
