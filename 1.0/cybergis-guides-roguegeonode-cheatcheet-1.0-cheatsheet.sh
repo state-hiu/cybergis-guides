@@ -1,5 +1,5 @@
 #!/bin/bash
-##This is a cheat sheet for the 
+##This is a cheat sheet for the ROGUE GeoNode Guide.
 
 #Step 1
 sudo su -
@@ -23,6 +23,7 @@ sudo su -
 cybergis-script-init-rogue.sh prod gems
 
 #Step 5
+#Initialize Database
 
 #Step 6
 sudo su -
