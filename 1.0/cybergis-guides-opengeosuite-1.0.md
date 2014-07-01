@@ -92,10 +92,10 @@ placeholder: remove master password file
 
 ###Step 5
 
-You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  The `repo` paramter is the path to a git repository that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
+You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  You can tun GeoServer with the following command.  The `repo` paramter is the path to a git repository that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
 ```
-cybergis-script-init-rogue.sh prod tune <repo> <Xmx>
+cybergis-script-geoserver.sh prod tune <repo> <Xmx>
 ```
 
 The git repo path should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will configure the JVM so that GeoServer can use up to 12 gigabytes of memory for it's heap.
