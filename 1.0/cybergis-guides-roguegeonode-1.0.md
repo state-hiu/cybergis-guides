@@ -36,9 +36,6 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 3. Install RVM (Ruby Version Manager).  [[Jump]](#step-3)
 4. Install Ruby GEM dependencies.  [[Jump]](#step-4)
 5. Initialize Database [[Jump]](#step-5)
-
-<hr>
-
 6. Install GeoNode.  [[Jump]](#step-6)
 7. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-7)
 8. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
