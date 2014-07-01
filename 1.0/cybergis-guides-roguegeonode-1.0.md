@@ -93,7 +93,7 @@ We now need to initialize a backend database service for GeoNode to store its ca
 There are three different configruation options for the backend database enumerated below: (5a) Amazon Web Sevices (AWS) Relational Databse Service (RDS), (5b) PostGIS on same instance as GeoNode, or (5c) PostGIS on a seperate instance than GeoNode.
 
 ####Step 5a.
-In step 5a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQl AWS RDS instance take the following steps. 
+In step 5a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQL AWS RDS instance take the following steps. 
 
 First, you need to lanuch a PostgreSQL RDS instance.  You can follow the instructions found on the AWS website at [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html).
 
