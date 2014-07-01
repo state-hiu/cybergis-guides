@@ -90,13 +90,22 @@ cybergis-script-init-rogue.sh prod gems
 
 We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
 
-There are three different configruation options for the backend database enumerated below: use Amazon Web Sevices (AWS) Relational Databse Service (RDS), run PostGIS on same instance as GeoNode, or run PostGIS on a seperate instance than GeoNode.
-
-
-For basic installations where the database and web server are on the same instance, you can skip this step.  This guide will explain how to set up PostGIS in AWS RDS and how to initialize a PostGIS backend in a separate instance.
+There are three different configruation options for the backend database enumerated below: (5a) Amazon Web Sevices (AWS) Relational Databse Service (RDS), (5b) PostGIS on same instance as GeoNode, or (5c) PostGIS on a seperate instance than GeoNode.
 
 ####Step 5a.
-In step 5a, you can install PostGIS in AWS RDS.  To install PostGIS on a PostgreSQl AWS RDS Database take the following steps.  Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
+In step 5a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQl AWS RDS instance take the following steps. 
+
+First, you need to lanuch a PostGreSQL RDS instance.  You can follow the instructions found on the AWS website at [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html).
+
+It is **strongly recommended** for running GeoNode in a production environment that you enable "Multi AZ Deployment" for the backend PostGIS database.  This will increase availability and enable failover capability.  "Multi AZ Deployment" will increase the reliability of your geospatial services.  See the AWS documentation  [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for more details.
+
+Another consideration when using AWS RDS is  the maintenance and backup windows.  It is recommended to set these windows for when you expect there to be the lowest activity, such as really early Sunday morning.
+
+```
+cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
+```
+
+ Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
 
 ```
 psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
@@ -104,13 +113,15 @@ psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 
 From within psql execute the following (based on the direction found here: [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS)).
 
-```
-cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
-```
+
 
 ####Step 5b.
 
 In step 5b, you can install the PostGIS backend on a separate virutal machine or instance.
+
+####step 5c.
+
+For basic installations where the database and web server are on the same instance, you can skip this step.  This guide will explain how to set up PostGIS in AWS RDS and how to initialize a PostGIS backend in a separate instance.
 
 ###Step 6
 
