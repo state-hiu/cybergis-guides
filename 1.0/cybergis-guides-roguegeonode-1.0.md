@@ -95,7 +95,7 @@ There are three different configruation options for the backend database enumera
 ####Step 5a.
 In step 5a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQl AWS RDS instance take the following steps. 
 
-First, you need to lanuch a PostGreSQL RDS instance.  You can follow the instructions found on the AWS website at [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html).
+First, you need to lanuch a PostgreSQL RDS instance.  You can follow the instructions found on the AWS website at [http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html).
 
 It is **strongly recommended** for running GeoNode in a production environment that you enable "Multi AZ Deployment" for the backend PostGIS database.  This will increase availability and enable failover capability.  "Multi AZ Deployment" will increase the reliability of your geospatial services.  See the AWS documentation  [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for more details.
 
