@@ -26,7 +26,7 @@ Installation only requires 5 simple steps.  Most steps only require executing on
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Add OpenGeo Suite apt repo to sources [[Jump]](#step-2)
-3. Install OpenGeo Suite [[Jump]](#step-3)
+3. Install the OpenGeo Suite [[Jump]](#step-3)
 4. Remove sensitive documents [[Jump]](#step-4)
 5. Tune memory space.  [[Jump]](#step-5)
 
@@ -56,7 +56,6 @@ The following code block will download and configure the open geo apt repository
 wget -qO - http://apt.opengeo.org/gpg.key | apt-key add -
 echo "deb http://apt.opengeo.org/suite/v4/ubuntu/ precise main" > /etc/apt/sources.list.d/opengeo.list
 apt-get update
-apt-get install opengeo
 ```
 
 You can check that you added the opengeo apt repo to your sources correctly, by checking the sources list with:
@@ -72,6 +71,12 @@ apt-cache search opengeo
 ```
 
 ###Step 3
+
+Make sure you've ran apt-get after adding the opengeo apt repo.  To install the OpenGeo Suite, just run the following command.
+
+```
+apt-get install opengeo
+```
 
 ###Step 4
 
