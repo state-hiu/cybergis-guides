@@ -25,9 +25,10 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 6 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
-2. Install OpenGeo Suite [[Jump]](#step-2)
-3. Remove sensitive documents [[Jump]](#step-3)
-4. Tune memory space.  [[Jump]](#step-4)
+2. Add OpenGeo Suite APT repo to sources [[Jump]](#step-2)
+3. Install OpenGeo Suite [[Jump]](#step-3)
+4. Remove sensitive documents [[Jump]](#step-4)
+5. Tune memory space.  [[Jump]](#step-5)
 
 ###Kown Issues
 
@@ -46,6 +47,29 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 ```
 
 ###Step 2
+
+The second step is to install the OpenGeo Suite Apt repository.
+
+The following code block will download and configure the open geo Apt repository.
+
+```
+wget -qO - http://apt.opengeo.org/gpg.key | apt-key add -
+echo "deb http://apt.opengeo.org/suite/v4/ubuntu/ precise main" > /etc/apt/sources.list.d/opengeo.list
+apt-get update
+apt-get install opengeo
+```
+
+You can check that you added the opengeo Apt repo to your sources correctly, by checking the sources list with:
+
+```
+cat /etc/apt/sources.list.d/opengeo.list | tail -n 4
+```
+
+and by checking the apt cache with the following command.
+
+```
+apt-cache search opengeo
+```
 
 ###Step 3
 
