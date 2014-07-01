@@ -101,7 +101,7 @@ It is **strongly recommended** for running GeoNode in a production environment t
 
 Another consideration when using AWS RDS is  the maintenance and backup windows.  It is recommended to set these windows for when you expect there to be the lowest activity, such as really early Sunday morning.
 
-Once you've deployed a PostgreSQL RDS instance, you only need to execute the one following command to initialize the database.  The command was built from AWS help docs found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS).  Execute this command from within the GeoNode instance.  Make sure you've configured the RDS DB security group to allow access from the GeoNode instance.
+Once you've deployed a PostgreSQL RDS instance, you only need to execute the one following command to initialize the database.  The command was built from AWS help docs found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS).  Execute this command from within the GeoNode instance.  Make sure you've configured the RDS DB security group to allow access from the GeoNode instance.  This command will initialize the `template_postgis` database.  Step 6 will actually build the `geonode` and `geonode_imports` database.
 
 ```
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
