@@ -78,7 +78,19 @@ Make sure you've ran apt-get after adding the opengeo apt repo.  To install the 
 apt-get install opengeo
 ```
 
+The default admin username/password will be admin/geoserver.  After the command has finished running, you should be able to log into GeoServer via the implicit url.  GeoServer will respond to the domain name or ip address automatically.
+
 ###Step 4
+
+You should now remove sensitive documents that are left on disk after a fresh install.
+
+You need to remove the master password file.  Before you remove this file, be sure to copy the password into secure storage (piece of paper,  usb stick, encrypted volume, etc.).  You are able to login with the master password as the `root` user with username `root` (this is different than the default `admin` user).
+
+```
+placeholder: remove master password file
+```
+
+###Step 5
 
 You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  The `repo` paramter is the path to a git repository that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
