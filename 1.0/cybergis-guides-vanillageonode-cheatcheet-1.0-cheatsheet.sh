@@ -23,10 +23,13 @@ add-apt-repository ppa:geonode/release
 apt-get update
 
 #Step 3
+sudo su -
 apt-get install geonode
 
 #Step 4
+sudo su -
 geonode createsuperuser
 
 #Step 5
+sudo su -
 geonode-updateip <ip/domain>
