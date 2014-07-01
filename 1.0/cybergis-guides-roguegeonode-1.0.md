@@ -37,6 +37,7 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 4. Install Ruby GEM dependencies.  [[Jump]](#step-4)
 5. Initialize Database [[Jump]](#step-5)
 
+<hr>
 
 6. Install GeoNode.  [[Jump]](#step-6)
 7. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-7)
