@@ -8,7 +8,7 @@ CyberGIS Guides (cybergis-guides)
 
 This repo includes guides for managing a CyberGIS infrastructure and executing standard tasks.  There are currently three guides: (1) Vanilla GeoNode, (2) ROGUE GeoNode, and (3) OpenGeo Suite.  These guides were made to simplify deployment of CyberGIS components in a production environment.
 
-If you are just interested in a basic deployment of GeoNode, you can use the installation instructions found at [http://geonode.org/](http://geonode.org/).
+If you are just interested in a basic deployment of GeoNode on Ubuntu 12.04, you can use the installation instructions found at [http://geonode.org/](http://geonode.org/).
 
 If you are intersted in a basic deployment of the OpenGeo Suite on Ubuntu 12.04, you can use the installation instructions found at [http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html](http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html).
 
