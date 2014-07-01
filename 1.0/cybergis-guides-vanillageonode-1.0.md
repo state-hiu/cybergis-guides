@@ -24,9 +24,9 @@ The Rapid Opensource Geospatial User-Driven Enterprise (ROGUE) Joint Capabilitie
 
 ## Installation
 
-Launching a ROGUE GeoNode only requires a few simple steps.  The installation process is relatively painless on a clean build and can be completed in less than 30 minutes.
+Launching a vanilla GeoNode only requires a few simple steps.  The installation process is very quick on a clean build and can be completed in less than 15 minutes.
 
-These instructions were written for deployment on the Ubuntu operating system, but may work on other Linux variants.  ROGUE will not install on Ubuntu 14.04 LTS yet as a few dependencies have not been upgraded yet.  We recommend using Ubuntu 12.04 LTS.
+These instructions were written for deployment on the Ubuntu operating system, but may work on other Linux variants.  GeoNode (Vanilla and ROGUE) will not install on Ubuntu 14.04 LTS yet as a few dependencies have not been upgraded yet.  We recommend using Ubuntu 12.04 LTS.
 
 You'll want to complete all the following command line calls as root (with login shell and enviornment).  Therefore, use `sudo su -` to become the root user.  Do not use `sudo su root`, as that will not provide the environment necessary.
 
@@ -35,20 +35,13 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
-2. Create ROGUE user account.  [[Jump]](#step-2)
-3. Install RVM (Ruby Version Manager).  [[Jump]](#step-3)
-4. Install Ruby GEM dependencies.  [[Jump]](#step-4)
-5. Initialize Database [[Jump]](#step-5)
-6. Install GeoNode.  [[Jump]](#step-6)
-7. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-7)
-8. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
-9. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-9)
-10. Add GeoGit sync cron jobs.  [[Jump]](#step-10)
-
+2. Add GeoNode apt repo to sources [[Jump]](#step-2)
+3. Install Vanilla GeoNode [[Jump]](#step-3)
+4. Create superuser [[Jump]](#step-4)
+5. Update IP Address [[Jump]](#step-5)
 
 ###Kown Issues
-1.  This scipt is currently incompatible with the most recent GeoGit Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
-2.  The SNS hooks are not added to any repository .geogit/hooks directories, since the Geoserver GeoGit hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
+No known issues
 
 ###Step 1
 
@@ -60,4 +53,51 @@ apt-get install -y curl vim git
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
+```
+
+###Step 2
+
+The second step is to install the GeoNode apt repository.
+
+The following code block will download and configure the GeoNode apt repository.
+
+```
+add-apt-repository ppa:geonode/release
+apt-get update
+```
+
+You can check that you added the GeoNode apt repo to your sources correctly, by checking the sources list with:
+
+```
+cat /etc/apt/sources.list | tail -n 4
+```
+
+and by checking the apt cache with the following command.
+
+```
+apt-get install geonode
+```
+
+###Step 3
+
+Make sure you've ran apt-get after adding the GeoNode apt repo.  To install vanilla GeoNode, just run the following command.
+
+```
+apt-get install geonode
+```
+
+###Step 4
+
+By default, GeoNode does not create an admin account.  The following command will create an admin account.  We **strongly recommend** just using admin/admin and changing the password later.
+
+```
+geonode createsuperuser
+```
+
+###Step 5
+
+To ehnace security, by default, GeoNode does not respond to any url.  To enable GeoNode to respond to its IP address or domain execute the following command.
+
+```
+geonode-updateip <ip/domain>
 ```
