@@ -8,9 +8,9 @@ Vanilla GeoNode Guide, Version 1.0
 
 ## Description
 
-This guide provides instructions for installing and managing a vanilla GeoNode instance in a production environment.  You can find information about installing a vanilla GeoNode without the advanced data editing and sharing technology at [http://geonode.org/](http://geonode.org/).  You can find more information about ROGUE below and at [http://rogue.lmnsolutions.com/](http://rogue.lmnsolutions.com/).  Use the directions found at [http://rogue.lmnsolutions.com/](http://rogue.lmnsolutions.com/) for deploying a ROGUE GeoNode in a development environment.
+This guide provides instructions for installing and managing a vanilla GeoNode instance in a production environment.  You can find basic information about installing a vanilla GeoNode at [http://geonode.org/](http://geonode.org/).  Use the ROGUE GeoNode guide for deployment of a Rogue GeoNode in a production environment [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md).
 
-If you find any bugs, in the vanilla GeoNode, please submit them as issues to the GeoNode GitHub repo at [https://github.com/GeoNode/geonode/issues](https://github.com/GeoNode/geonode/issues).  If you find bugs, in the ROGUE GeoNode, please submit them as tickets to the rogue_geonode GitHub repo at: [https://github.com/ROGUE-JCTD/rogue_geonode/issues](https://github.com/ROGUE-JCTD/rogue_geonode/issues).  If you find any bugs with the 
+If you find any bugs, in the vanilla GeoNode, please submit them as issues to the GeoNode GitHub repo at [https://github.com/GeoNode/geonode/issues](https://github.com/GeoNode/geonode/issues).  If you find any bugs with the 
 guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
 
 ### Cheat Sheet
