@@ -48,9 +48,9 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 ###Step 2
 
-The second step is to install the OpenGeo Suite Apt repository.
+The second step is to install the OpenGeo Suite apt repository.
 
-The following code block will download and configure the open geo Apt repository.
+The following code block will download and configure the open geo apt repository.
 
 ```
 wget -qO - http://apt.opengeo.org/gpg.key | apt-key add -
@@ -59,7 +59,7 @@ apt-get update
 apt-get install opengeo
 ```
 
-You can check that you added the opengeo Apt repo to your sources correctly, by checking the sources list with:
+You can check that you added the opengeo apt repo to your sources correctly, by checking the sources list with:
 
 ```
 cat /etc/apt/sources.list.d/opengeo.list | tail -n 4
