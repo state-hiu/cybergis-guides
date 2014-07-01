@@ -25,7 +25,7 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 6 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
-2. Add OpenGeo Suite APT repo to sources [[Jump]](#step-2)
+2. Add OpenGeo Suite apt repo to sources [[Jump]](#step-2)
 3. Install OpenGeo Suite [[Jump]](#step-3)
 4. Remove sensitive documents [[Jump]](#step-4)
 5. Tune memory space.  [[Jump]](#step-5)
