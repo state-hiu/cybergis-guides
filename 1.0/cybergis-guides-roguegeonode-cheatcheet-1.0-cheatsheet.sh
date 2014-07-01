@@ -29,8 +29,8 @@ reboot
 sudo su -
 cybergis-script-init-rogue.sh prod gems
 
-#Step 5
-#Initialize Database
+#Step 5a
+cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 
 #Step 6
 sudo su -
