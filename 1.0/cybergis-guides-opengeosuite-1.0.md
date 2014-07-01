@@ -25,7 +25,9 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 6 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
-2. Tune memory space.  [[Jump]](#step-2)
+2. Install OpenGeo Suite [[Jump]](#step-2)
+3. Remove sensitive documents [[Jump]](#step-3)
+4. Tune memory space.  [[Jump]](#step-4)
 
 ###Kown Issues
 
@@ -44,6 +46,10 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 ```
 
 ###Step 2
+
+###Step 3
+
+###Step 4
 
 You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  The `repo` paramter is the path to a git repository that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
