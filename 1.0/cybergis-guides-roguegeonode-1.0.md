@@ -21,15 +21,15 @@ The Rapid Opensource Geospatial User-Driven Enterprise (ROGUE) Joint Capabilitie
 
 ## Installation
 
-Launching a ROGUE GeoNode only requires a few simple steps.  The installation process is relatively painless on a clean build and can be completed in less than 30 minutes, usually 15 minutes.
+Launching a ROGUE GeoNode only requires a few simple steps.  The installation process is relatively painless on a clean build and can be completed in less than 30 minutes.
 
-These instructions were written for deployment on the Ubuntu operating system, but may work on other Linux variants.  ROGUE will not install on Ubuntu 14.04 yet as a few dependencies have not been upgraded yet.  We recommend using Ubuntu 12.04.
+These instructions were written for deployment on the Ubuntu operating system, but may work on other Linux variants.  ROGUE will not install on Ubuntu 14.04 LTS yet as a few dependencies have not been upgraded yet.  We recommend using Ubuntu 12.04 LTS.
 
-You'll want to complete all the below steps as the root (with login shell and enviornment).  Therefore, use `sudo su -` to become the root user.  Do not use `sudo su root`, as that will not provide the environment necessary.
+You'll want to complete all the following command line calls as root (with login shell and enviornment).  Therefore, use `sudo su -` to become the root user.  Do not use `sudo su root`, as that will not provide the environment necessary.
 
 You can **rerun** most steps, if a network connection drops, e.g., during installation of a Ruby GEM dependency.
 
-Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.  Steps 6 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
+Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Create ROGUE user account.  [[Jump]](#step-2)
@@ -85,7 +85,12 @@ cybergis-script-init-rogue.sh prod gems
 
 ###Step 5.
 
-You have a lot of flexibility in deciding how to configure your PostGIS Database.  For basic installations where the database and web server are on the same instance, you can skip this step.  This guide will explain how to set up PostGIS in AWS RDS and how to initialize a PostGIS backend in a separate instance.
+We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
+
+There are three different configruation options for the backend database enumerated below: use Amazon Web Sevices (AWS) Relational Databse Service (RDS), run PostGIS on same instance as GeoNode, or run PostGIS on a seperate instance than GeoNode.
+
+
+For basic installations where the database and web server are on the same instance, you can skip this step.  This guide will explain how to set up PostGIS in AWS RDS and how to initialize a PostGIS backend in a separate instance.
 
 ####Step 5a.
 In step 5a, you can install PostGIS in AWS RDS.  To install PostGIS on a PostgreSQl AWS RDS Database take the following steps.  Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
