@@ -34,6 +34,7 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 
 Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
+0. Provision Instance [[Jump]](#step-0)
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Create ROGUE user account.  [[Jump]](#step-2)
 3. Install RVM (Ruby Version Manager).  [[Jump]](#step-3)
@@ -49,6 +50,9 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 ###Kown Issues
 1.  This scipt is currently incompatible with the most recent GeoGit Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
 2.  The SNS hooks are not added to any repository .geogit/hooks directories, since the Geoserver GeoGit hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
+
+###Step 0
+Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS AMI for ROGUE GeoNode.
 
 ###Step 1
 
