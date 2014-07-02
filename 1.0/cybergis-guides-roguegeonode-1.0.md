@@ -111,6 +111,12 @@ Once you've deployed a PostgreSQL RDS instance, you only need to execute the one
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 ```
 
+The password variable should be encased in single quotes to ensure it is treated as a literal.  For example,
+
+```
+cybergis-script-postgis.sh prod install rds XXX.rds.amazonaws.com 5432 postgres 'd235n^&^&$$%jksdfnDF' template_postgis template0
+```
+
 ####Step 5b.
 
 **To Be Completed**
