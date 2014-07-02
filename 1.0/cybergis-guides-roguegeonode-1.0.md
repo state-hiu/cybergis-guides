@@ -52,7 +52,7 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 2.  The SNS hooks are not added to any repository .geogit/hooks directories, since the Geoserver GeoGit hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
 
 ###Step 0
-Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS AMI for ROGUE GeoNode.
+Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
 
 ###Step 1
 
