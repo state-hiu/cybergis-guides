@@ -60,7 +60,7 @@ The first step is install the CyberGIS scripts from the [cybergis-scripts](https
 
 ```
 apt-get update
-apt-get install -y curl vim git
+apt-get install -y curl vim git postgresql-client-common
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
