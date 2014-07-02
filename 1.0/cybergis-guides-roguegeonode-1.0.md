@@ -56,7 +56,7 @@ Before you begin the installation process, you'll need to provision a virtual or
 
 ###Step 1
 
-The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
+The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) GitHub repo.
 
 ```
 apt-get update
