@@ -117,6 +117,14 @@ The password variable should be encased in single quotes to ensure it is treated
 cybergis-script-postgis.sh prod install rds XXX.rds.amazonaws.com 5432 postgres 'd235n^&^&$$%jksdfnDF' template_postgis template0
 ```
 
+To confirm the template_postgis database was created correctly, you can log into the database from the shell with:
+
+```
+PGPASSWORD='XXX' psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --d=template_postgis
+```
+
+Run the `\list` command to check for databases and `\dn` to check for schemas.
+
 ####Step 5b.
 
 **To Be Completed**
