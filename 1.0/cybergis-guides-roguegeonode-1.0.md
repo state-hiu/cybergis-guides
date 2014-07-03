@@ -114,7 +114,7 @@ cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> temp
 The password variable should be encased in single quotes to ensure it is treated as a literal.  For example,
 
 ```
-cybergis-script-postgis.sh prod install rds XXX.rds.amazonaws.com 5432 postgres 'd^&^$%jfnDF' template_postgis template0
+cybergis-script-postgis.sh prod install rds XXX.rds.amazonaws.com 5432 postgres 'd&^$%jfn' template_postgis template0
 ```
 
 To confirm the template_postgis database was created correctly, you can log into the database from the shell with:
