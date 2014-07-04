@@ -39,13 +39,12 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 3. Create ROGUE user account.  [[Jump]](#step-3)
 4. Install RVM (Ruby Version Manager).  [[Jump]](#step-4)
 5. Install Ruby GEM dependencies.  [[Jump]](#step-5)
-6. Initialize Database [[Jump]](#step-6)
-7. Configure Server [[Jump]](#step-7)
-8. Provision [[Jump]](#step-8)
-9. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-9)
-10. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
-11. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-11)
-12. Add GeoGit sync cron jobs.  [[Jump]](#step-12)
+6. Initialize Database & Configure Server [[Jump]](#step-6)
+7. Provision [[Jump]](#step-7)
+8. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-8)
+9. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
+10. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-10)
+11. Add GeoGit sync cron jobs.  [[Jump]](#step-11)
 
 
 ###Kown Issues
@@ -126,6 +125,14 @@ PGPASSWORD='XXX' psql --host=XXX.rds.amazonaws.com --port=5432 --username postgr
 
 Run the `\list` command to check for databases and `\dn` to check for schemas.
 
+Next,  we need to set our server's configuration files depending on whether it is using a local or external database.
+
+Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
+
+```
+cybergis-script-init-rogue.sh prod conf application <fqdn> <db_addr> <db_pass> <db_port>
+```
+
 ####Step 6b
 
 **To Be Completed**
@@ -147,16 +154,6 @@ For basic installations where the database and web server are on the same instan
 
 ###Step 7
 
-Next, configure our server's configuration files depending on whether it is using a local or external database.
-
-Do **not** forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com.  Do **not** include a port, protocol, or context path.
-
-```
-cybergis-script-init-rogue.sh prod conf [database|application|both]
-```
-
-###Step 8
-
 Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 Do **not** forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com.  Do **not** include a port, protocol, or context path.
@@ -167,7 +164,7 @@ cybergis-script-init-rogue.sh prod geonode <fqdn>
 
 After installation is complete, go to your GeoNode in a browser to confirm it installed properly.  The default user and password is admin and admin.  If installation was successful, continue to install baseline servers and remotes.
 
-###Step 9
+###Step 8
 
 If you add external servers to the baseline, they'll, by default, appear in MapLoom, without requiring each user to add the url manually for each new map.  The following command will add the given server infromation to the settings.py file at the end of  `/var/lib/geonode/rogue_geonode/rogue_geonode/settings.py`.
 
@@ -176,7 +173,7 @@ To add a geonode server, include the protocol, domain, and port, for example `cy
 ```
 cybergis-script-init-rogue.sh prod server [geonode|wms|tms] <name> <url>
 ```
-###Step 10
+###Step 9
 
 **Adding remotes from this script is currently broken.  Use MapLoom instead.  DO NOT EXECUTE**
 
@@ -202,7 +199,7 @@ curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName
 
 **Adding remotes from this script is currently broken.  Use MapLoom instead.  DO NOT EXECUTE**
 
-###Step 11
+###Step 10
 
 To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
 
@@ -223,7 +220,7 @@ export DJANGO_SETTINGS_MODULE=rogue_geonode.settings
 /var/lib/geonode/bin/python /opt/cybergis-scripts.git/lib/rogue/post_commit_hook.py <commit_message>
 ```
 
-###Step 12
+###Step 11
 Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very useful when syncing large datasets in primarily one direction.  For example, pushing a large amount of data to a field office at 6am before staff arrive at work.  The script will also help organizations receive updates to their layers from others without having to share their own propriety information.  The script will only sync when there are no conflicts.  Support for automated notifications when the sync fails using AWS SNS will be implemented soon.  You can sync at a standard hourly, daily, weekly, or monthly interval using the following command.  You need to add a remote via MapLoom or step 7 (once the script is fixed) before hand.
 
 You can execute a push, pull, or two-way (duplex) cron job.  The three options for direction are: `push, pull, and duplex`.
