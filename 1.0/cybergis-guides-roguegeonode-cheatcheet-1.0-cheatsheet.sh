@@ -7,8 +7,10 @@
 #============#
 #Important!  This is not designed as a single bash script.  You'll still need to execute lines one by one.
 #============#
-
 #Step 1
+#Provision (virtual) machine
+
+#Step 2
 sudo su -
 apt-get update
 apt-get install -y curl vim git
@@ -17,21 +19,22 @@ git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 exit
 
-#Step 2
+#Step 3
 sudo su -
 cybergis-script-init-rogue.sh prod user
 
-#Step 3
+#Step 4
 cybergis-script-init-rogue.sh prod rvm
 reboot
 
-#Step 4
+#Step 5
 sudo su -
 cybergis-script-init-rogue.sh prod gems
 
-#Step 5a
+#Step 6a (RDS)
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
+cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_addr> <db_pass> <db_port>
 
-#Step 6
-sudo su -
-cybergis-script-init-rogue.sh prod geonode <fqdn>
+#Step 6b (Remote Database)
+
+#Step 6c (Local Database)
