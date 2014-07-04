@@ -92,9 +92,9 @@ cybergis-script-init-rogue.sh prod gems
 
 ###Step 6
 
-We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
+We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  We'll then configure the chef configuration files.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
 
-There are three different configruation options for the backend database enumerated below: (5a) Amazon Web Sevices (AWS) Relational Databse Service (RDS), (5b) PostGIS on same instance as GeoNode, or (5c) PostGIS on a seperate instance than GeoNode.
+There are three different deployment paths enumerated below depending on how you set up your backend database: (6a) Amazon Web Sevices (AWS) Relational Databse Service (RDS), (6b) PostGIS on same instance as GeoNode, or (6c) PostGIS on a seperate instance than GeoNode.
 
 ####Step 6a
 In step 6a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQL AWS RDS instance take the following steps. 
@@ -125,12 +125,18 @@ PGPASSWORD='XXX' psql --host=XXX.rds.amazonaws.com --port=5432 --username postgr
 
 Run the `\list` command to check for databases and `\dn` to check for schemas.
 
-Next,  we need to set our server's configuration files depending on whether it is using a local or external database.
+Next we need to configure our application server to use the RDS database.
 
 Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
 
 ```
 cybergis-script-init-rogue.sh prod conf application <fqdn> <db_addr> <db_pass> <db_port>
+```
+
+For example,
+
+```
+cybergis-script-init-rogue.sh prod conf application example.com XXX.rds.amazonaws.com '123ABC' 5432
 ```
 
 ####Step 6b
@@ -154,12 +160,12 @@ For basic installations where the database and web server are on the same instan
 
 ###Step 7
 
-Next, install GeoNode and the custom components, such as MapLoom.  This step will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
+Finally, we can now provision our instance.  This will install all the custom ROGUE componenets and will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 Do **not** forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com.  Do **not** include a port, protocol, or context path.
 
 ```
-cybergis-script-init-rogue.sh prod geonode <fqdn>
+cybergis-script-init-rogue.sh provision
 ```
 
 After installation is complete, go to your GeoNode in a browser to confirm it installed properly.  The default user and password is admin and admin.  If installation was successful, continue to install baseline servers and remotes.
