@@ -33,7 +33,7 @@ cybergis-script-init-rogue.sh prod gems
 
 #Step 6a (RDS)
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
-cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_addr> <db_pass> <db_port>
+cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password>
 
 #Step 6b (Remote Database)
 
