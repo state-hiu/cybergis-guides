@@ -130,13 +130,13 @@ Next we need to configure our application server to use the RDS database.
 Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
 
 ```
-cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_addr> <db_pass> <db_port>
+cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password>
 ```
 
 For example,
 
 ```
-cybergis-script-init-rogue.sh prod conf_application example.com XXX.rds.amazonaws.com '123ABC' 5432
+cybergis-script-init-rogue.sh prod conf_application example.com XXX.rds.amazonaws.com false 5432 '123ABC'
 ```
 
 ####Step 6b
