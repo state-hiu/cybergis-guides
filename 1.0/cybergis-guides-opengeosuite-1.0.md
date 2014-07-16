@@ -110,4 +110,11 @@ You'll also want to add swap space to the instance so GeoServer (Tomcat) can abs
 cybergis-script-ec2.sh prod swap 64g /mnt/swap_64g.swap
 ```
 
+You can confirm that the swap was added correctly, with `free -g`.  You should see the swap space on the `Swap` line.
+
+To delete a swap file, run:
+
+```
+cybergis-script-ec2.sh prod delete_swap /mnt/swap_64g.swap
+```
 
