@@ -104,4 +104,10 @@ The git repo path should be encased in single quotes to ensure it is treated as 
 cybergis-script-geoserver.sh prod tune '/cybergis/misc/git/repo/etc_defaults' 12G
 ```
 
+You'll also want to add swap space to the instance so GeoServer (Tomcat) can absorb high-memory WMS calls without crashing.
+
+```
+cybergis-script-ec2.sh prod swap 64g /mnt/swap_64g.swap
+```
+
 
