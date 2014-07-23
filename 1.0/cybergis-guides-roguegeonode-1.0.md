@@ -45,6 +45,7 @@ Installation only requires 6 simple steps.  Most steps only require executing on
 9. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
 10. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-10)
 11. Add GeoGit sync cron jobs.  [[Jump]](#step-11)
+12. Add OpenStreetMap (OSM) extracts.  [[Jump]](#step-12)
 
 
 ###Kown Issues
@@ -248,3 +249,15 @@ cybergis-script-init-rogue.sh prod cron2 pull admin admin 'geonode:incidents_rep
 ```
 
 The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  The concurrent commands execute in order of when they were added.  You can double check that the commands executed properly, manually adds sync commands, remove commands, ior otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGit--it effectively uses network bandwith.
+
+###Step 12
+The first thing we need to do make sure we have a repository to store our OpenStreetMap (OSM) mappings.  You can clone directly from `cybergis-osm-mappings` or set up a fork.
+
+```
+cd /opt
+git clone https://github.com/state-hiu/cybergis-osm-mappings.git cybergis-osm-mappings.git
+#No build scripts yet but may be in the future.
+#cp cybergis-osm-mappings.git/profile/cybergis-osm-mappings.sh /etc/profile.d/
+```
+
+
