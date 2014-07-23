@@ -80,11 +80,10 @@ You're still root right?  We now need to install RVM (Ruby Version Manager).  RV
 
 ```
 cybergis-script-init-rogue.sh prod rvm
-reboot
 ```
 
 ###Step 5
-Make sure to reboot the server at this point to ensure the Ruby enviornment is set up properly.  **Do not just log out and log back in**.  Next, install the Ruby GEM dependencies.  The GEM dependencies that need to be installed at this point are Ruby, chef, solve, nokogiri, and berkshelf.  The following command will install them all.  Remember to become root again (`sudo su -`).  
+Next, install the Ruby GEM dependencies.  The GEM dependencies that need to be installed at this point are Ruby, chef, solve, nokogiri, and berkshelf.  The following command will install them all.  Remember to become root again (`sudo su -`).  
 
 
 ```
