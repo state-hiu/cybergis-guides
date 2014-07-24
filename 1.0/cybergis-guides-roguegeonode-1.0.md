@@ -91,7 +91,7 @@ cybergis-script-init-rogue.sh prod bundler
 
 We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  We'll then configure the chef configuration files.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
 
-There are three different deployment paths enumerated below depending on how you set up your backend database: (6a) Amazon Web Sevices (AWS) Relational Databse Service (RDS), (6b) PostGIS on same instance as GeoNode, or (6c) PostGIS on a seperate instance than GeoNode.
+There are three different deployment paths enumerated below depending on how you set up your backend database: ([5a](#step-5a)) Amazon Web Sevices (AWS) Relational Databse Service (RDS), ([5b](#step-5b)) PostGIS on same instance as GeoNode, or ([5c](#step-5c)) PostGIS on a seperate instance than GeoNode.
 
 ####Step 5a
 In step 5a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQL AWS RDS instance take the following steps. 
