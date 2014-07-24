@@ -122,7 +122,7 @@ PGPASSWORD='XXX' psql --host=XXX.rds.amazonaws.com --port=5432 --username postgr
 
 Run the `\list` command to check for databases and `\dn` to check for schemas.
 
-Next we need to configure our application server to use the RDS database.
+Next, we need to configure our application server to use the RDS database.
 
 Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
 
