@@ -13,7 +13,7 @@
 #Step 2
 sudo su -
 apt-get update
-apt-get install -y curl vim git
+apt-get install -y curl vim git postgresql-client-common postgresql-client-9.1
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
@@ -25,16 +25,12 @@ cybergis-script-init-rogue.sh prod user
 
 #Step 4
 cybergis-script-init-rogue.sh prod rvm
-reboot
+cybergis-script-init-rogue.sh prod bundler
 
-#Step 5
-sudo su -
-cybergis-script-init-rogue.sh prod gems
-
-#Step 6a (RDS)
+#Step 5a (RDS)
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password> <gs_baseline>
 
-#Step 6b (Remote Database)
+#Step 5b (Remote Database)
 
-#Step 6c (Local Database)
+#Step 5c (Local Database)
