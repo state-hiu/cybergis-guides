@@ -57,7 +57,7 @@ Before you begin the installation process, you'll need to provision a virtual or
 
 ###Step 2
 
-The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) GitHub repo.
+The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) GitHub repo. As root (`sudo su -`) execute the following commands.
 
 ```
 apt-get update
@@ -83,11 +83,10 @@ cybergis-script-init-rogue.sh prod rvm
 ```
 
 ###Step 5
-Next, install the Ruby GEM dependencies.  The GEM dependencies that need to be installed at this point are Ruby, chef, solve, nokogiri, and berkshelf.  The following command will install them all.  Remember to become root again (`sudo su -`).  
-
+Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/) for more info.  Remember to become root again (`sudo su -`).
 
 ```
-cybergis-script-init-rogue.sh prod gems
+cybergis-script-init-rogue.sh prod bundler
 ```
 
 ###Step 6
