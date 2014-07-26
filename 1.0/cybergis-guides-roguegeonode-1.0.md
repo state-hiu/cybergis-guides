@@ -150,8 +150,6 @@ psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 
 ####Step 5c
 
-**To Be Completed**
-
 For basic installations where PostGIS and GeoNode are on the same instance also referred to as a standalone deployment, configure with the following command.
 
 ```
