@@ -33,4 +33,8 @@ cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db
 
 #Step 5b (Remote Database)
 
-#Step 5c (Local Database)
+#Step 5c (Local Database / Standalone)
+cybergis-script-init-rogue.sh prod conf_standalone <fqdn> <gs_baseline>
+
+#Step 6
+cybergis-script-init-rogue.sh prod provision
