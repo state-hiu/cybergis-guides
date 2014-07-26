@@ -38,3 +38,6 @@ cybergis-script-init-rogue.sh prod conf_standalone <fqdn> <gs_baseline>
 
 #Step 6
 cybergis-script-init-rogue.sh prod provision
+
+#Step 7
+cybergis-script-init-rogue.sh prod server [geonode|wms|tms] <name> <url>
