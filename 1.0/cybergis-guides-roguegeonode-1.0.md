@@ -252,6 +252,9 @@ cybergis-script-init-rogue.sh prod cron2 pull admin admin 'geonode:incidents_rep
 The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  The concurrent commands execute in order of when they were added.  You can double check that the commands executed properly, manually adds sync commands, remove commands, ior otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGit--it effectively uses network bandwith.
 
 ###Step 11
+
+**Still a work in progress**
+
 The first thing we need to do make sure we have a repository to store our OpenStreetMap (OSM) mappings.  You can clone directly from `cybergis-osm-mappings` or set up a fork.
 
 ```
