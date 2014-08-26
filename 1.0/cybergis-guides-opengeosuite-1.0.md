@@ -17,6 +17,10 @@ The Humanitarian Information Unit has been developing a sophisticated geographic
 
 If you find any bugs in the OpenGeo Suite, please submit them as issues to the respective component's GitHub repository or to the OpenGeo Suite GitHub repository at [https://github.com/boundlessgeo/suite](https://github.com/boundlessgeo/suite).  If you find any bugs with the guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
 
+## Provision
+
+Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
+
 ## Installation
 
 Launching an OpenGeo Suite instance only requires a few simple steps.  The installation process is relatively painless on a clean build and can be completed in less than 30 minutes, usually 15 minutes.
