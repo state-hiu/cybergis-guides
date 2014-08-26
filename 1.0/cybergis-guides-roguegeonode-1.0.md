@@ -34,7 +34,7 @@ These instructions were written for deployment on the Ubuntu operating system, b
 
 You'll want to complete all the following command line calls as root (with login shell and enviornment).  Therefore, use `sudo su -` to become the root user.  Do not use `sudo su root`, as that will not provide the environment necessary.
 
-You can **rerun** most steps, if a network connection drops, e.g., during installation of a Ruby GEM dependency.
+You can **rerun** most steps, but not all, if a network connection drops, e.g., during installation of a Ruby GEM dependency.
 
 Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
