@@ -26,4 +26,6 @@ apt-get install opengeo
 
 #Step 5
 cybergis-script-geoserver.sh prod tune <repo> <Xmx>
+#For example:
+#cybergis-script-geoserver.sh prod tune '/cybergis/misc/git/repo/etc_defaults' 12G
 cybergis-script-ec2.sh prod swap 64g /mnt/swap_64g.swap
