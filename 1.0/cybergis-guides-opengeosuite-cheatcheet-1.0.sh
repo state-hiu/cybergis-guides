@@ -23,6 +23,9 @@ apt-get update
 apt-get install opengeo
 
 #Step 4
+cat /var/lib/opengeo/geoserver/security/masterpw.info
+rm -f /var/lib/opengeo/geoserver/security/masterpw.info
+rm -f /var/lib/opengeo/geoserver/security/users.properties.old
 
 #Step 5
 cybergis-script-geoserver.sh prod tune <repo> <Xmx>
