@@ -82,7 +82,7 @@ apt-cache search opengeo
 
 ###Step 3
 
-Confirm you're run `apt-get update` so that the OpenGeo Suite apt repo is discovered.  To install the OpenGeo Suite, run the following command.
+Confirm you ran `apt-get update` so that the OpenGeo Suite apt repo is discovered.  To install the OpenGeo Suite, run the following command.
 
 ```
 apt-get install opengeo
