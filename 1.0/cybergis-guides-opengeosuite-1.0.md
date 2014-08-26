@@ -97,7 +97,9 @@ You should now remove sensitive documents that are left on disk after a fresh in
 You need to remove the master password file.  Before you remove this file, be sure to copy the password into secure storage (piece of paper,  usb stick, encrypted volume, etc.).  You are able to login with the master password as the `root` user with username `root` (this is different than the default `admin` user).
 
 ```
-placeholder: remove master password file
+cat /var/lib/opengeo/geoserver/security/masterpw.info
+rm -f /var/lib/opengeo/geoserver/security/masterpw.info
+rm -f /var/lib/opengeo/geoserver/security/users.properties.old
 ```
 
 ###Step 5
