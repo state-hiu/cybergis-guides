@@ -88,7 +88,7 @@ Confirm you ran `apt-get update` so that the OpenGeo Suite apt repo is discovere
 apt-get install opengeo
 ```
 
-The default admin username/password will be admin/geoserver.  After the command has finished running, you should be able to log into GeoServer via the implicit url.  GeoServer will respond to the domain name or ip address automatically.
+The default admin `username/password` will be `admin/geoserver`.  After the command has finished running, you should be able to log into GeoServer via the implicit url.  GeoServer will respond to the domain name or ip address automatically.
 
 ###Step 4
 
