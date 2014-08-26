@@ -45,7 +45,7 @@ No known issues
 
 ###Step 1
 
-The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
+The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.  As root (`sudo su -`) execute the following commands.
 
 ```
 apt-get update
