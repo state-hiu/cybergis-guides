@@ -57,7 +57,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 ###Step 2
 
-The second step is to download and configure the OpenGeo Suite apt repository.  The following code block will download and configure the OpenGeo Suite apt repository.
+The second step is to download and configure the OpenGeo Suite apt repo.  The following code block will download and configure the OpenGeo Suite apt repo.
 
 ```
 wget -qO - http://apt.opengeo.org/gpg.key | apt-key add -
@@ -79,7 +79,7 @@ apt-cache search opengeo
 
 ###Step 3
 
-Make sure you've ran apt-get after adding the opengeo apt repo.  To install the OpenGeo Suite, just run the following command.
+Confirm you're run `apt-get update` so that the OpenGeo apt repo is discovered.  To install the OpenGeo Suite, run the following command.
 
 ```
 apt-get install opengeo
@@ -99,7 +99,7 @@ placeholder: remove master password file
 
 ###Step 5
 
-You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  You can tun GeoServer with the following command.  The `repo` paramter is the path to a git repository that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
+You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  You can tun GeoServer with the following command.  The `repo` paramter is the path to a git repo that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
 ```
 cybergis-script-geoserver.sh prod tune <repo> <Xmx>
