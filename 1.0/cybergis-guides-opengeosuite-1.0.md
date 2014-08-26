@@ -68,7 +68,7 @@ echo "deb http://apt.opengeo.org/suite/v4/ubuntu/ precise main" > /etc/apt/sourc
 apt-get update
 ```
 
-You can check that you added the opengeo apt repo to your sources correctly, by checking the sources list with:
+You can check that you added the OpenGeo Suite apt repo to your sources correctly, by checking the sources list with:
 
 ```
 cat /etc/apt/sources.list.d/opengeo.list | tail -n 4
@@ -82,7 +82,7 @@ apt-cache search opengeo
 
 ###Step 3
 
-Confirm you're run `apt-get update` so that the OpenGeo apt repo is discovered.  To install the OpenGeo Suite, run the following command.
+Confirm you're run `apt-get update` so that the OpenGeo Suite apt repo is discovered.  To install the OpenGeo Suite, run the following command.
 
 ```
 apt-get install opengeo
