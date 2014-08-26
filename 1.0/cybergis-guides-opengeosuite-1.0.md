@@ -34,7 +34,7 @@ You'll want to complete all the below steps as the root (with login shell and en
 
 You can **rerun** most steps, but not all, if a network connection drops, e.g., during installation of a Ruby GEM dependency.
 
-Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 6 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
+Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Add OpenGeo Suite apt repo to sources [[Jump]](#step-2)
