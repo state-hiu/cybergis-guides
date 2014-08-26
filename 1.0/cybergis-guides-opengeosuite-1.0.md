@@ -10,6 +10,9 @@ OpenGeo Suite Guide, Version 1.0
 
 This guide provides instructions for installing and managing an OpenGeo Suite instance in a production environment.  You can find the basic installation guide at [http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html](http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html).  You can find more information about configuring the OpenGeo Suite for production at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
+### Cheat Sheet
+In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-cheatcheet-1.0.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-cheatcheet-1.0.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still should execute commands line by line.  The cheat sheet is not "executable".
+
 ### CyberGIS
 The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, GeoGit, OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
 
