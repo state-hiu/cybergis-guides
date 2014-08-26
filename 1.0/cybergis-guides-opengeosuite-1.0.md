@@ -119,7 +119,7 @@ cybergis-script-geoserver.sh prod tune '/cybergis/misc/git/repo/etc_defaults' 12
 You'll also want to add swap space to the instance so GeoServer (Tomcat) can absorb high-memory WMS calls without crashing.  See the Ubuntu SwapFaq article for more information at [https://help.ubuntu.com/community/SwapFaq](https://help.ubuntu.com/community/SwapFaq).
 
 ```
-cybergis-script-ec2.sh prod swap 64g /mnt/swap_64g.swap
+cybergis-script-ec2.sh swap 64g /mnt/swap_64g.swap
 ```
 
 You can confirm that the swap was added correctly, with `free -g`.  You should see the swap space on the `Swap` line.
@@ -127,6 +127,6 @@ You can confirm that the swap was added correctly, with `free -g`.  You should s
 To delete a swap file, run:
 
 ```
-cybergis-script-ec2.sh prod delete_swap /mnt/swap_64g.swap
+cybergis-script-ec2.sh delete_swap /mnt/swap_64g.swap
 ```
 
