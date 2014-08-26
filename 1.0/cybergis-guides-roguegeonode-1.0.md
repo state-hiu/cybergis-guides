@@ -8,11 +8,6 @@ ROGUE GeoNode Guide, Version 1.0
 
 This guide provides instructions for installing and managing a ROGUE GeoNode instance in a production environment.  You can find information about installing a vanilla GeoNode without the advanced data editing and sharing technology at [http://geonode.org/](http://geonode.org/).  You can find more information about ROGUE below and at [http://geoshape.org/](http://geoshape.org/).  Use the directions found at [http://geoshape.org/](http://geoshape.org/) for deploying a ROGUE GeoNode in a development environment.
 
-### Bugs
-
-If you find any bugs, in the vanilla GeoNode, please submit them as issues to the GeoNode GitHub repo at [https://github.com/GeoNode/geonode/issues](https://github.com/GeoNode/geonode/issues).  If you find bugs, in the ROGUE GeoNode, please submit them as tickets to the rogue_geonode GitHub repo at: [https://github.com/ROGUE-JCTD/rogue_geonode/issues](https://github.com/ROGUE-JCTD/rogue_geonode/issues).  If you find any bugs with the 
-guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
-
 ### Cheat Sheet
 In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-cheatcheet-1.0-cheatsheet.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-cheatcheet-1.0-cheatsheet.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still need to execute commands line by line.  The cheat sheet is not "executable".
 
@@ -21,6 +16,11 @@ The Humanitarian Information Unit has been developing a sophisticated geographic
 
 ### ROGUE
 The Rapid Opensource Geospatial User-Driven Enterprise (ROGUE) Joint Capabilities Technology Demonstration (JCTD) is a two-year research & development project developing the technology for distributed geographic data creation and synchronization in a disconnected environement.  See [http://geoshape.org/](http://geoshape.org/) for more information.  HIU is leveraging the technology developed through ROGUE to build out the CyberGIS into a robust globally distributed infrastruture.
+
+### Bugs
+
+If you find any bugs, in the vanilla GeoNode, please submit them as issues to the GeoNode GitHub repo at [https://github.com/GeoNode/geonode/issues](https://github.com/GeoNode/geonode/issues).  If you find bugs, in the ROGUE GeoNode, please submit them as tickets to the rogue_geonode GitHub repo at: [https://github.com/ROGUE-JCTD/rogue_geonode/issues](https://github.com/ROGUE-JCTD/rogue_geonode/issues).  If you find any bugs with the 
+guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
 
 ## Installation
 
