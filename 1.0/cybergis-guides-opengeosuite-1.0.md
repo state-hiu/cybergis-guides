@@ -10,6 +10,9 @@ OpenGeo Suite Guide, Version 1.0
 
 This guide provides instructions for installing and managing an OpenGeo Suite instance in a production environment.  You can find the basic installation guide at [http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html](http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html).  You can find more information about configuring the OpenGeo Suite for production at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
+### CyberGIS
+The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, GeoGit, OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
+
 ### Bugs
 
 If you find any bugs in the OpenGeo Suite, please submit them as issues to the respective component's GitHub repository or to the OpenGeo Suite GitHub repository at [https://github.com/boundlessgeo/suite](https://github.com/boundlessgeo/suite).  If you find any bugs with the guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
