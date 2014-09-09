@@ -88,7 +88,7 @@ apt-get update
 You can check that you added the GeoNode apt repo to your sources correctly, by checking the sources list with:
 
 ```
-cat /etc/apt/sources.list | tail -n 4
+cat /etc/apt/sources.list.d/geonode-release-precise.list
 ```
 
 and by checking the apt cache with the following command.
