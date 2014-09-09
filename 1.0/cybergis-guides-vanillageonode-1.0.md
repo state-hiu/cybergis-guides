@@ -68,6 +68,7 @@ The second step is install the CyberGIS scripts from the [cybergis-scripts](http
 ```
 apt-get update
 apt-get install -y curl vim git
+apt-get install -y python-software-properties
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
