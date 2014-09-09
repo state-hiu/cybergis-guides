@@ -81,7 +81,7 @@ cat /etc/apt/sources.list | tail -n 4
 and by checking the apt cache with the following command.
 
 ```
-apt-get install geonode
+apt-cache search geonode
 ```
 
 ###Step 3
