@@ -38,18 +38,32 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 
 Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
-1. Install CyberGIS Scripts.  [[Jump]](#step-1)
-2. Add GeoNode apt repo to sources [[Jump]](#step-2)
-3. Install Vanilla GeoNode [[Jump]](#step-3)
-4. Create superuser [[Jump]](#step-4)
-5. Update IP Address [[Jump]](#step-5)
+1. Configure locale.  [[Jump]](#step-1)
+2. Install CyberGIS Scripts.  [[Jump]](#step-2)
+3. Add GeoNode apt repo to sources [[Jump]](#step-3)
+4. Install Vanilla GeoNode [[Jump]](#step-4)
+5. Create superuser [[Jump]](#step-5)
+6. Update IP Address [[Jump]](#step-6)
 
 ###Kown Issues
 No known issues
 
 ###Step 1
 
-The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
+If you are installing vanilla GeoNode on a Vagrant VM it is a good idea to assert the correct locale through the following code block.  Most other builds, such as the Amazon AWS Ubuntu images, do not need this step as they are configured properly.
+
+```
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
+```
+
+###Step 2
+
+The second step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
 
 ```
 apt-get update
@@ -59,9 +73,9 @@ git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 ```
 
-###Step 2
+###Step 3
 
-The second step is to install the GeoNode apt repository.
+The third step is to install the GeoNode apt repository.
 
 The following code block will download and configure the GeoNode apt repository.
 
@@ -82,7 +96,7 @@ and by checking the apt cache with the following command.
 apt-cache search geonode
 ```
 
-###Step 3
+###Step 4
 
 Make sure you've ran apt-get after adding the GeoNode apt repo.  To install vanilla GeoNode, just run the following command.
 
@@ -90,7 +104,7 @@ Make sure you've ran apt-get after adding the GeoNode apt repo.  To install vani
 apt-get install geonode
 ```
 
-###Step 4
+###Step 5
 
 By default, GeoNode does not create an admin account.  The following command will create an admin account.  We **strongly recommend** just using admin/admin and changing the password later.
 
@@ -98,7 +112,7 @@ By default, GeoNode does not create an admin account.  The following command wil
 geonode createsuperuser
 ```
 
-###Step 5
+###Step 6
 
 To ehnace security, by default, GeoNode does not respond to any url.  To enable GeoNode to respond to its IP address or domain execute the following command.
 
