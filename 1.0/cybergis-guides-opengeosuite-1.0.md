@@ -20,7 +20,7 @@ If you find any bugs in the OpenGeo Suite, please submit them as issues to the r
 
 ## Provision
 
-Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
+Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for the OpenGeo Suite.
 
 ## Installation
 
@@ -30,7 +30,7 @@ These instructions were written for deployment on the Ubuntu operating system, b
 
 You'll want to complete all the below steps as the root (with login shell and enviornment).  Therefore, use `sudo su -` to become the root user.  Do not use `sudo su root`, as that may not provide the environment necessary.
 
-You can **rerun** most steps, but not all, if a network connection drops, e.g., during installation of a Ruby GEM dependency.
+You can **rerun** most steps, but not all, if a network connection drops.
 
 Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.
 
