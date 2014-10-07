@@ -4,8 +4,6 @@ OpenGeo Suite Guide, Version 1.0
 | Guides: | [Vanilla GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-1.0.md) | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) |  [OpenGeo Suite](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-1.0.md) |
 | ---- |  ---- | ---- | ---- |
 
-#This Guide is still under development.  It should not be used, yet.
-
 ## Description
 
 This guide provides instructions for installing and managing an OpenGeo Suite instance in a production environment.  You can find the basic installation guide at [http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html](http://suite.opengeo.org/opengeo-docs/installation/ubuntu/install.html).  You can find more information about configuring the OpenGeo Suite for production at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
