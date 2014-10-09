@@ -71,7 +71,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 Log out completely and log back in.  Remember to become root again (`sudo su -`).  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.  You don't execute any commands as the "rogue" user during installation.  Execute every command as root.
 
 ```
-cybergis-script-init-rogue.sh prod user
+cybergis-script-rogue.sh prod user
 ```
 
 ###Step 3
@@ -79,13 +79,13 @@ cybergis-script-init-rogue.sh prod user
 You're still root right?  We now need to install RVM (Ruby Version Manager).  RVM is used to install Ruby GEM dependencies.  Chef also uses ruby to manage the integration of custom ROGUE components with a vanilla GeoNode.
 
 ```
-cybergis-script-init-rogue.sh prod rvm
+cybergis-script-rogue.sh prod rvm
 ```
 
 Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/) for more info.
 
 ```
-cybergis-script-init-rogue.sh prod bundler
+cybergis-script-rogue.sh prod bundler
 ```
 
 ###Step 4
@@ -128,13 +128,13 @@ Next, we need to configure our application server to use the RDS database.
 Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
 
 ```
-cybergis-script-init-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password> <gs_baseline>
+cybergis-script-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password> <gs_baseline>
 ```
 
 For example,
 
 ```
-cybergis-script-init-rogue.sh prod conf_application example.com XXX.rds.amazonaws.com false 5432 '123ABC' 'master'
+cybergis-script-rogue.sh prod conf_application example.com XXX.rds.amazonaws.com false 5432 '123ABC' 'master'
 ```
 
 ####Step 4b
@@ -155,13 +155,13 @@ psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 For basic installations where PostGIS and GeoNode are on the same instance also referred to as a standalone deployment, configure with the following command.
 
 ```
-cybergis-script-init-rogue.sh prod conf_standalone <fqdn> <gs_baseline>
+cybergis-script-rogue.sh prod conf_standalone <fqdn> <gs_baseline>
 ```
 
 For example,
 
 ```
-cybergis-script-init-rogue.sh prod conf_standalone example.com 'master'
+cybergis-script-rogue.sh prod conf_standalone example.com 'master'
 ```
 
 ###Step 5
@@ -169,7 +169,7 @@ cybergis-script-init-rogue.sh prod conf_standalone example.com 'master'
 Finally, we can now provision our instance.  This will install all the custom ROGUE componenets and will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 ```
-cybergis-script-init-rogue.sh provision
+cybergis-script-rogue.sh provision
 ```
 
 After installation is complete, go to your GeoNode in a browser to confirm it installed properly.  The default user and password is admin and admin.  If installation was successful, continue to install baseline servers and remotes.
@@ -178,10 +178,10 @@ After installation is complete, go to your GeoNode in a browser to confirm it in
 
 If you add external servers to the baseline, they'll, by default, appear in MapLoom, without requiring each user to add the url manually for each new map.  The following command will add the given server infromation to the settings.py file at the end of  `/var/lib/geonode/rogue_geonode/rogue_geonode/settings.py`.
 
-To add a geonode server, include the protocol, domain, and port, for example `cybergis-script-init-rogue.sh prod server geonode ExampleName http://example.com`.  The included parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-init-rogue.sh prod server wms ExampleName http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-init-rogue.sh prod server tms ExampleName http://hiu-maps.net/hot/1.0.0`.
+To add a geonode server, include the protocol, domain, and port, for example `cybergis-script-rogue.sh prod server geonode ExampleName http://example.com`.  The included parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-rogue.sh prod server wms ExampleName http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-rogue.sh prod server tms ExampleName http://hiu-maps.net/hot/1.0.0`.
 
 ```
-cybergis-script-init-rogue.sh prod server [geonode|wms|tms] <name> <url>
+cybergis-script-rogue.sh prod server [geonode|wms|tms] <name> <url>
 ```
 ###Step 7
 
@@ -192,13 +192,13 @@ You'll want to install remotes, next.  Remotes enable users to sync data among m
 To add a remote GeoNode use, 
 
 ```
-cybergis-script-init-rogue.sh prod remote <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
+cybergis-script-rogue.sh prod remote <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
 ```
 
 To add a remote GeoGit repo (server agnostic),
 
 ```
-cybergis-script-init-rogue.sh prod remote2 <user:password> <repoURL> <remoteName> <remoteURL> <remoteUser> <remotePassword>
+cybergis-script-rogue.sh prod remote2 <user:password> <repoURL> <remoteName> <remoteURL> <remoteUser> <remotePassword>
 ```
 
 You can confirm the remotes were added successfully, but executing the following command agains the GeoGit Web API.  You should see an xml output of all configured remotes. 
@@ -214,13 +214,13 @@ curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName
 To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
 
 ```
-cybergis-script-init-rogue.sh prod aws
+cybergis-script-rogue.sh prod aws
 ```
 
 To add the relevant settings to the GeoNode settings.py file, run the following command.  You'll most likely need to wrap the sns_topic string with double or single quotes to correctly pass the arguments.
 
 ```
-cybergis-script-init-rogue.sh prod sns <aws_access_key_id> <aws_secret_access_key> <sns_topic>
+cybergis-script-rogue.sh prod sns <aws_access_key_id> <aws_secret_access_key> <sns_topic>
 ```
 
 You can test SNS with the following code block.  You need to use GeoNode's python interpreter to correctly load the GeoNode settings from the command line.
@@ -236,19 +236,19 @@ Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very
 You can execute a push, pull, or two-way (duplex) cron job.  The three options for direction are: `push, pull, and duplex`.
 
 ```
-cybergis-script-init-rogue.sh prod cron <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> [hourly|daily|weekly|monthly]
+cybergis-script-rogue.sh prod cron <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> [hourly|daily|weekly|monthly]
 ```
 
 You can also sync with a custom interval using standard crontab syntax.  See the relevant wikipedia article for more information [http://en.wikipedia.org/wiki/Cron](http://en.wikipedia.org/wiki/Cron).
 
 ```
-cybergis-script-init-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> <frequency>
+cybergis-script-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> <frequency>
 ```
 
 The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGit sync every 5 minutes.
 
 ```
-cybergis-script-init-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' dummy dummy@example.com '*/5 * * * *'
+cybergis-script-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' dummy dummy@example.com '*/5 * * * *'
 ```
 
 The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  The concurrent commands execute in order of when they were added.  You can double check that the commands executed properly, manually adds sync commands, remove commands, ior otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGit--it effectively uses network bandwith.
