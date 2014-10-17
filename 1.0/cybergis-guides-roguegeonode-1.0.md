@@ -287,3 +287,10 @@ Once you've downloaded a copy of the styles, we'll import them into GeoServer us
 ```
 cybergis-script-geoserver-import-styles.py --path /opt/cybergis-styles.git/styles --geoserver <GEOSERVER> --prefix "cybergis" --username <username --password <password>
 ```
+
+Then run updatelayers, so the new styles are visible in GeoNode.
+
+```
+cd /var/lib/geonode/rogue_geonode
+bin/python manage.py updatelayers
+```
