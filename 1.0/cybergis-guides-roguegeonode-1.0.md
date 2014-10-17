@@ -38,16 +38,17 @@ You can **rerun** most steps, but not all, if a network connection drops, e.g., 
 
 Installation only requires 6 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
-2. Install CyberGIS Scripts.  [[Jump]](#step-1)
-3. Create ROGUE user account.  [[Jump]](#step-2)
-4. Install RVM (Ruby Version Manager) and Bundler.  [[Jump]](#step-3)
-5. Initialize Database & Configure Server. [[Jump]](#step-4)
-6. Provision [[Jump]](#step-5)
-7. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
-8. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
-9. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-8)
-10. Add GeoGit sync cron jobs.  [[Jump]](#step-9)
-11. Add OpenStreetMap (OSM) extracts.  [[Jump]](#step-10)
+1. Install CyberGIS Scripts.  [[Jump]](#step-1)
+2. Create ROGUE user account.  [[Jump]](#step-2)
+3. Install RVM (Ruby Version Manager) and Bundler.  [[Jump]](#step-3)
+4. Initialize Database & Configure Server. [[Jump]](#step-4)
+5. Provision [[Jump]](#step-5)
+6. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
+7. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
+8. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-8)
+9. Add GeoGit sync cron jobs.  [[Jump]](#step-9)
+10. Add OpenStreetMap (OSM) extracts.  [[Jump]](#step-10)
+11. Add styles to baseline [[Jump]](#step-11)
 
 ###Kown Issues
 1.  This scipt is currently incompatible with the most recent GeoGit Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
@@ -271,4 +272,18 @@ git clone https://github.com/state-hiu/cybergis-osm-mappings.git cybergis-osm-ma
 #cp cybergis-osm-mappings.git/profile/cybergis-osm-mappings.sh /etc/profile.d/
 ```
 
+###Step 11
 
+
+The first thing we need to do make sure we have a repo of the CyberGIS styles on the file filesystem.  You can clone directly from `cybergis-styles`, set up a fork, or work with your own folder of styles.
+
+```
+cd /opt
+git clone https://github.com/state-hiu/cybergis-styles.git cybergis-styles.git
+```
+
+Once you've downloaded a copy of the styles, we'll import them into GeoServer using a python wrapper for the REST interface.
+
+```
+cybergis-script-geoserver-import-styles.py --path /opt/cybergis-styles.git/styles --geoserver <GEOSERVER> --prefix "cybergis" --username <username --password <password>
+```
