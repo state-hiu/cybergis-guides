@@ -174,7 +174,7 @@ Finally, we can now provision our instance.  This will install all the custom RO
 cybergis-script-rogue.sh provision
 ```
 
-After provisioning or updating templates, you might want to check the `/etc/hosts/` and `/var/lib/geonode/rogue_geonode/rogue_geonode/local_settings.py`, so that they have the right configuration.
+After provisioning or updating templates, you might want to check the `/etc/hosts/` and `/var/lib/geonode/rogue_geonode/geoshape/local_settings.py`, so that they have the right configuration.
 
 **GZIP Compression Issue**
 
