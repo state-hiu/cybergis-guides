@@ -122,7 +122,7 @@ WS=osm-extracts
 AN=hiu
 AE='HIU_INFO@state.gov'
 TO=360
-RB=/home/ubuntu/ws/repos/
+RB=~/ws/repos/
 #===================#
 #Khulna
 EXTENT='bangladesh:khulna'
@@ -167,7 +167,7 @@ TIMESTAMP=$(date +%s)
 GS_USER=admin
 GS_PASS=geoserver
 #==#
-TEMP=/home/ubuntu/temp/
+TEMP=~/temp/
 #==#
 GS='http://localhost:8080/geoserver/'
 #==#
