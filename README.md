@@ -36,6 +36,10 @@ This guide provides instructions for installing and managing a ROGUE GeoNode ins
 
 This guide provides instructions for installing and managing a OpenGeo Suite instance.
 
+### [OSM Extracts](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-1.0.md)
+
+This guide provides instructions for installing and managing OSM extracts through GeoServer/GeoGig.
+
 ## Contributing
 
 HIU is currently not accepting pull requests for this repository.
