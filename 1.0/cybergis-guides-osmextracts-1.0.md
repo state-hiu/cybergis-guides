@@ -19,7 +19,7 @@ The Rapid Opensource Geospatial User-Driven Enterprise (ROGUE) Joint Capabilitie
 
 ### Bugs
 
-If you find any bugs, in GeoGig, please submit them as issues to the GeoGig GitHub repo at [https://github.com/boundlessgeo/geogig/issues](https://github.com/boundlessgeo/geogig/issues).  If you find any bugs in the GeoGig GeoServer Extension, please submit them as issues the GeoServer Extensions GitHub repo at [https://github.com/boundlessgeo/geoserver-exts/issues](https://github.com/boundlessgeo/geoserver-exts/issues).  If you find any bugs with the 
+If you find any bugs in GeoGig please submit them as issues to the GeoGig GitHub repo at [https://github.com/boundlessgeo/geogig/issues](https://github.com/boundlessgeo/geogig/issues).  If you find any bugs in the GeoGig GeoServer Extension, please submit them as issues the GeoServer Extensions GitHub repo at [https://github.com/boundlessgeo/geoserver-exts/issues](https://github.com/boundlessgeo/geoserver-exts/issues).  If you find any bugs with the 
 guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
 
 ## Provision
