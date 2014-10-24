@@ -34,6 +34,7 @@ Installation only requires 4 simple steps.  Most steps only require executing on
 2. Install "geogig" environment.  [[Jump]](#step-2)
 3. Install "client" environment.  [[Jump]](#step-3)
 4. Start GeoServer with GeoGig Extension. [[Jump]](#step-4)
+5. Write scripts and configuration files. [[Jump]](#step-5)
 
 ###Kown Issues
 No known issues
@@ -82,4 +83,59 @@ Or to launch it silently in the background, execute the following:
 ```
 cd ~/ws/gs/geoserver-2.6-RC1/
 ./bin/startup.sh 2>&1 > /dev/null &
+```
+###Step 5
+
+We now need to write the actual configuration files for what we where and when we want to extract.  For the sake of this Guide let's execute an extraction for Khulna, Bandladesh.
+
+First, let's create a distinct folder to hold the scripts and configuration files for this extract project.
+
+```
+mkdir ~/ws/repo
+mkdir ~/ws/repo/khulna
+```
+
+Next, let's create a tab-separated values file containing the basic info on what we want to extract.
+
+```
+touch ~/ws/repo/khulna/osm_extracts.tsv
+```
+
+Then add the followinng values to `~/ws/repo/khulna/osm_extracts.tsv` via VIM or your favorite editor.
+
+```
+id	datastore	extent	mapping
+1	khulna_raw	bangladesh:khulna	
+2	khulna_basic	bangladesh:khulna	basic:buildings_and_roads
+```
+
+####Initilziation Script
+
+```
+#!/bin/bash
+#==========##========#
+BIN=/opt/cybergis-scripts.git/bin
+USER=admin
+PASS=geoserver
+GS='http://localhost:8080/geoserver/'
+WS=osm-extracts
+AN=hiu
+AE='HIU_INFO@state.gov'
+TO=360
+RB=/home/ubuntu/ws/repos/
+#===================#
+#Khulna
+EXTENT='bangladesh:khulna'
+#Khulna - Raw Nodes and Ways
+RN=khulna_raw
+REPO=$RB$RN
+rm -fr $REPO
+python $BIN/cybergis-script-geogig-osm-init.py  -v --path $REPO --name $RN --username $USER --password $PASS -gs $GS -ws $WS -to $TO --extent $EXTENT -an $AN -ae $AE --nodes --ways
+#----------#
+#Khulna - Basic
+RN=khulna_basic
+REPO=$RB$RN
+MAPPING='basic:buildings_and_roads'
+rm -fr $REPO
+python $BIN/cybergis-script-geogig-osm-init.py  -v --path $REPO --name $RN --username $USER --password $PASS -gs $GS -ws $WS -to $TO --extent $EXTENT --mapping $MAPPING -an $AN -ae $AE
 ```
