@@ -6,10 +6,10 @@ OSM Extracts Guide, Version 1.0
 
 ## Description
 
-This guide provides instructions for installing and managing OSM extracts via GeoServer/Geogig in a production environment.
+This guide provides instructions for installing and managing OSM extracts via GeoServer/GeoGig in a production environment.
 
 ### Cheat Sheet
-In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-cheatcheet-1.0.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-cheatcheet-1.0.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still need to execute commands line by line.  The cheat sheet is not "executable".
+In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-cheatcheet-1.0.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-cheatcheet-1.0.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still need to execute commands line by line.  The cheat sheet is not "executable".
 
 ### CyberGIS
 The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, GeoGit, OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
@@ -19,7 +19,7 @@ The Rapid Opensource Geospatial User-Driven Enterprise (ROGUE) Joint Capabilitie
 
 ### Bugs
 
-If you find any bugs, in the vanilla GeoNode, please submit them as issues to the GeoNode GitHub repo at [https://github.com/GeoNode/geonode/issues](https://github.com/GeoNode/geonode/issues).  If you find any bugs with the 
+If you find any bugs, in GeoGig, please submit them as issues to the GeoGig GitHub repo at [https://github.com/boundlessgeo/geogig/issues](https://github.com/boundlessgeo/geogig/issues).  If you find any bugs in the GeoGig GeoServer Extension, please submit them as issues the GeoServer Extensions GitHub repo at [https://github.com/boundlessgeo/geoserver-exts/issues](https://github.com/boundlessgeo/geoserver-exts/issues).  If you find any bugs with the 
 guide itself, please submit them to this repo at [https://github.com/state-hiu/cybergis-guides/issues](https://github.com/state-hiu/cybergis-guides/issues).
 
 ## Provision
