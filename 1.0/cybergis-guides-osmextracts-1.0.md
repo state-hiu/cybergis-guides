@@ -64,3 +64,17 @@ cybergis-script-env.sh client install
 ```
 
 ###Step 4
+
+To start GeoServer with the GeoGig extension, exectue the following:
+
+```
+cd ~/ws/gs/geoserver-2.6-RC1/
+./bin/startup.sh
+```
+
+Or to launch it silently in the background, execute the following:
+
+```
+cd ~/ws/gs/geoserver-2.6-RC1/
+./bin/startup.sh 2>&1 > /dev/null &
+```
