@@ -49,7 +49,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 ###Step 2
 
-Install the "geogig" environment.
+Install the "geogig" environment.  This will install cybergis-styles, cybergis-osm-mappings, and cybergis-client-examples to `/opt`.
 
 ```
 cybergis-script-env.sh geogig install
