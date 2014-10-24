@@ -54,3 +54,13 @@ Install the "geogig" environment.  This will install cybergis-styles, cybergis-o
 ```
 cybergis-script-env.sh geogig install
 ```
+
+###Step 3
+
+Install the "client" environment.  This will install Apache and cybergis-client-examples to `/opt`.
+
+```
+cybergis-script-env.sh client install
+```
+
+###Step 4
