@@ -6,7 +6,7 @@ OSM Extracts Guide, Version 1.0
 
 ## Description
 
-This guide provides instructions for creating and managing OSM extracts via GeoServer/GeoGig.  First, this guide includes sections on [provision](#provision), [installation](#installation), and [running GeoServer](#running-geoserver).  The guide then includes sections on [initializing](), updating, snapshotting, and animating extracts.
+This guide provides instructions for creating and managing OSM extracts via GeoServer/GeoGig.  First, this guide includes sections on [provision](#provision), [installation](#installation), and [running GeoServer](#running-geoserver).  The guide then includes sections on [initializing](#initializing-extracts), [updating](#updating-extracts), snapshotting, and animating extracts.
 
 ### Cheat Sheet
 In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-cheatcheet-1.0.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-cheatsheet-1.0.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still need to execute commands line by line.  The cheat sheet is not "executable".
