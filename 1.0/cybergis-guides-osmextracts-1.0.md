@@ -85,7 +85,7 @@ cd ~/ws/gs/geoserver-2.6-RC1/
 
 ##Initializing Extracts
 
-We now need to write the actual configuration files for what area and time period we want to extract.  For the sake of this Guide let's execute an extraction for Khulna, Bandladesh.
+We now need to write the actual configuration files for what area and time period we want to extract.  For the sake of this Guide let's execute an extraction for Khulna, Bangladesh.
 
 First, let's create a distinct folder to hold the scripts and configuration files for this extract project.
 
@@ -158,6 +158,8 @@ python  $BIN/cybergis-script-geogig-osm-sync.py false -v -gs $GS -ws $WS --usern
 
 ##Snapshotting Extracts
 
+We now need to set up a snapshotting routine to our manual or cron job processing.  You should snapshot the current data of your layers after you update their related GeoGig repos.  This is particularly useful for animations and publishing the data.  The below script, is just an example.  The script snapshots the current layers into PostGIS tables in AWS RDS, creates layers for the snapshots, and creates a layergroup for all coincident snapshots.
+
 ```
 #!/bin/bash
 #==========##========#
@@ -227,7 +229,7 @@ python $BIN/cybergis-script-geoserver-publish-layergroup.py -gs $GS -ws $WS -lg 
 ```
 ##Animating Extracts
 
-Go to cybergis client ("viewer") at `http://localhost/khulna/khulna.html`.  Get bbox, width, and height parameters from WMS layer.  Fill those in.
+Go to cybergis client ("viewer") at `http://localhost/khulna/khulna.html`.  Get bbox, width, and height parameters from WMS layer.  Fill those in.  The below script uses the snapshots created in the previous section to generate animations of how the OSM data has changed over time.
 
 ```
 #!/bin/bash
