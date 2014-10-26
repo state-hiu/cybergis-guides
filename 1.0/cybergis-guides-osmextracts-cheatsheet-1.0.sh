@@ -18,3 +18,6 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 #Step 2
 cybergis-script-env.sh geogig install
+
+#Step 3
+cybergis-script-env.sh client install
