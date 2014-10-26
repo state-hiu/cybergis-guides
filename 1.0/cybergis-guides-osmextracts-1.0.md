@@ -69,7 +69,7 @@ Install the "client" environment.  This will install Apache and cybergis-client-
 cybergis-script-env.sh client install
 ```
 
-###Step 4
+##Running GeoServer
 
 To start GeoServer with the GeoGig extension, exectue the following:
 
@@ -84,7 +84,8 @@ Or to launch it silently in the background, execute the following:
 cd ~/ws/gs/geoserver-2.6-RC1/
 ./bin/startup.sh 2>&1 > /dev/null &
 ```
-###Step 5
+
+##Initializing Extracts
 
 We now need to write the actual configuration files for what we where and when we want to extract.  For the sake of this Guide let's execute an extraction for Khulna, Bandladesh.
 
@@ -108,8 +109,6 @@ id	datastore	extent	mapping
 1	khulna_raw	bangladesh:khulna	
 2	khulna_basic	bangladesh:khulna	basic:buildings_and_roads
 ```
-
-####Initializing
 
 ```
 #!/bin/bash
@@ -139,7 +138,7 @@ MAPPING='basic:buildings_and_roads'
 rm -fr $REPO
 python $BIN/cybergis-script-geogig-osm-init.py  -v --path $REPO --name $RN --username $USER --password $PASS -gs $GS -ws $WS -to $TO --extent $EXTENT --mapping $MAPPING -an $AN -ae $AE
 ```
-####Updating
+##Updating Extracts
 
 ```
 #!/bin/bash
@@ -156,7 +155,7 @@ TO=360
 python  $BIN/cybergis-script-geogig-osm-sync.py false -v -gs $GS -ws $WS --username $USER --password $PASS -an $AN -ae $AE -to $TO --extracts osm_extracts.tsv
 ```
 
-####Snapshotting
+##Snapshotting Extracts
 
 ```
 #!/bin/bash
@@ -225,7 +224,7 @@ STYLES=$(echo $STYLES | cut -c 2- )
 python $BIN/cybergis-script-geoserver-publish-layergroup.py -gs $GS -ws $WS -lg $LG --layers "$LAYERS" --styles "$STYLES" --username $GS_USER --password $GS_PASS
 #===================#
 ```
-####Animating
+##Animating Extracts
 
 Go to cybergis client ("viewer") at `http://localhost/khulna/khulna.html`.  Get bbox, width, and height parameters from WMS layer.  Fill those in.
 
