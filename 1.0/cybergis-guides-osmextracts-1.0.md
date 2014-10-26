@@ -28,13 +28,11 @@ Before you begin the installation process, you'll need to provision a virtual or
 
 ## Installation
 
-Installation only requires 4 simple steps.  Most steps only require executing one command on the command line.
+Installation only requires 3 simple steps.  Most steps only require executing one command on the command line.
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Install "geogig" environment.  [[Jump]](#step-2)
 3. Install "client" environment.  [[Jump]](#step-3)
-4. Start GeoServer with GeoGig Extension. [[Jump]](#step-4)
-5. Write scripts and configuration files. [[Jump]](#step-5)
 
 ###Kown Issues
 No known issues
