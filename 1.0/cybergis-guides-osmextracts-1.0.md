@@ -6,7 +6,7 @@ OSM Extracts Guide, Version 1.0
 
 ## Description
 
-This guide provides instructions for installing and managing OSM extracts via GeoServer/GeoGig in a production environment.
+This guide provides instructions for creating and managing OSM extracts via GeoServer/GeoGig.
 
 ### Cheat Sheet
 In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-cheatcheet-1.0.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-cheatsheet-1.0.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still need to execute commands line by line.  The cheat sheet is not "executable".
@@ -85,7 +85,7 @@ cd ~/ws/gs/geoserver-2.6-RC1/
 
 ##Initializing Extracts
 
-We now need to write the actual configuration files for what we where and when we want to extract.  For the sake of this Guide let's execute an extraction for Khulna, Bandladesh.
+We now need to write the actual configuration files for what area and time period we want to extract.  For the sake of this Guide let's execute an extraction for Khulna, Bandladesh.
 
 First, let's create a distinct folder to hold the scripts and configuration files for this extract project.
 
