@@ -107,6 +107,7 @@ id	datastore	extent	mapping
 1	khulna_raw	bangladesh:khulna	
 2	khulna_basic	bangladesh:khulna	basic:buildings_and_roads
 ```
+Then, we need to create and execute the actual initialization script, such as the one below.
 
 ```
 #!/bin/bash
@@ -137,6 +138,8 @@ rm -fr $REPO
 python $BIN/cybergis-script-geogig-osm-init.py  -v --path $REPO --name $RN --username $USER --password $PASS -gs $GS -ws $WS -to $TO --extent $EXTENT --mapping $MAPPING -an $AN -ae $AE
 ```
 ##Updating Extracts
+
+You can update the extracts manually or via a cron job.  You should create a script wrapper for `cybergis-script-geogig-osm-sync.py`, so it easier to manage the multiple input values.  You can execute the script at whatever frequency desired.  Although the Overpass API is relatively performant, there is some latency.  Please be careful if you set up cron jobs for large areas.  Updates to the OSM extracts are transactional.  Therefore, it is exceptionally hard to corrupt extracts, but you might waste a lot of system resources if you update at a high frequency.  Only set the interval to less than 5 minutes if you've run some tests.
 
 ```
 #!/bin/bash
