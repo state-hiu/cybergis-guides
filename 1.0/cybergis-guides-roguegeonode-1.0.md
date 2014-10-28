@@ -157,6 +157,8 @@ For example,
 cybergis-script-rogue.sh prod conf_application example.com XXX.rds.amazonaws.com false 5432 '123ABC' 'master'
 ```
 
+**Important!!**  Before provisioning, we also need to slightly change `geoshape_external_db.json`.  Add `"recipe[rogue::database]"`, to `/opt/rogue-chef-repo/roles/geoshape_external_db.json` between geoshape_base and rogue.  This is a hotfix, until a RDS (database as a service) role is created.
+
 ####Step 4b
 
 **To Be Completed**
