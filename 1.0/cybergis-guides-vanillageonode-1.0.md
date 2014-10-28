@@ -24,7 +24,24 @@ guide itself, please submit them to this repo at [https://github.com/state-hiu/c
 
 ## Provision
 
-Before you begin the installation process, you'll need to provision a virtual or physical machine.  If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for vanilla GeoNode.
+Before you begin the installation process, you'll need to provision a virtual or physical machine.  Vanilla GeoNode will run on [Amazon Web Services (AWS)](#aws-machines), [Vagrant](#vagrant-machines), and almost any type of virtual machine.
+
+### AWS Machines
+If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
+
+### Vagrant Machines
+
+If you are installing vanilla GeoNode on a Vagrant VM it is a good idea to assert the correct locale through the following code block.  Most other builds, such as the Amazon AWS Ubuntu images, do not need this step as they are configured properly.  See issue 985 for explanation at [https://github.com/GeoNode/geonode/issues/985](https://github.com/GeoNode/geonode/issues/985).
+
+```
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
+```
+
 
 ## Installation
 
@@ -38,32 +55,18 @@ You can **rerun** most steps, if a network connection drops, e.g., during instal
 
 Installation only requires 5 simple steps.  Most steps only require executing one command on the command line.  Steps 7 to 9 are optional, but help integration of GeoNode into existing geospatial workflows.
 
-1. Configure locale.  [[Jump]](#step-1)
-2. Install CyberGIS Scripts.  [[Jump]](#step-2)
-3. Add GeoNode apt repo to sources [[Jump]](#step-3)
-4. Install Vanilla GeoNode [[Jump]](#step-4)
-5. Create superuser [[Jump]](#step-5)
-6. Update IP Address [[Jump]](#step-6)
+1. Install CyberGIS Scripts.  [[Jump]](#step-1)
+2. Add GeoNode apt repo to sources [[Jump]](#step-2)
+3. Install Vanilla GeoNode [[Jump]](#step-3)
+4. Create superuser [[Jump]](#step-4)
+5. Update IP Address [[Jump]](#step-5)
 
 ###Kown Issues
 No known issues
 
 ###Step 1
 
-If you are installing vanilla GeoNode on a Vagrant VM it is a good idea to assert the correct locale through the following code block.  Most other builds, such as the Amazon AWS Ubuntu images, do not need this step as they are configured properly.  See issue 985 for explanation at [https://github.com/GeoNode/geonode/issues/985](https://github.com/GeoNode/geonode/issues/985).
-
-```
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-locale-gen en_US.UTF-8
-dpkg-reconfigure locales
-```
-
-###Step 2
-
-The second step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
+The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
 
 ```
 apt-get update
@@ -74,9 +77,9 @@ git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 ```
 
-###Step 3
+###Step 2
 
-The third step is to install the GeoNode apt repository.
+The second step is to install the GeoNode apt repository.
 
 The following code block will download and configure the GeoNode apt repository.
 
@@ -97,7 +100,7 @@ and by checking the apt cache with the following command.
 apt-cache search geonode
 ```
 
-###Step 4
+###Step 3
 
 Make sure you've ran apt-get after adding the GeoNode apt repo.  To install vanilla GeoNode, just run the following command.
 
@@ -105,7 +108,7 @@ Make sure you've ran apt-get after adding the GeoNode apt repo.  To install vani
 apt-get install geonode
 ```
 
-###Step 5
+###Step 4
 
 By default, GeoNode does not create an admin account.  The following command will create an admin account.  We **strongly recommend** just using admin/admin and changing the password later.
 
@@ -113,7 +116,7 @@ By default, GeoNode does not create an admin account.  The following command wil
 geonode createsuperuser
 ```
 
-###Step 6
+###Step 5
 
 To ehnace security, by default, GeoNode does not respond to any url.  To enable GeoNode to respond to its IP address or domain execute the following command.
 
