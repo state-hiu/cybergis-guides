@@ -31,6 +31,10 @@ cybergis-script-init-rogue.sh prod user
 cybergis-script-init-rogue.sh prod rvm
 cybergis-script-init-rogue.sh prod bundler
 
+#Step 4
+#If cybergis-script-init-rogue.sh prod [conf_standalone|conf_application] stalls then run the below line and then rerun.
+source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'
+
 #Step 4a (RDS)
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 #To confirm that PostGIS was set up correctly, try logging into the databse with the command below.
