@@ -186,7 +186,7 @@ cybergis-script-rogue.sh prod conf_standalone example.com 'master'
 Finally, we can now provision our instance.  This will install all the custom ROGUE componenets and will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 ```
-cybergis-script-rogue.sh provision
+cybergis-script-rogue.sh prod provision
 ```
 
 After provisioning or updating templates, you might want to check the `/etc/hosts/` and `/var/lib/geonode/rogue_geonode/geoshape/local_settings.py`, so that they have the right configuration.
