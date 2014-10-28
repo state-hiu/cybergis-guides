@@ -96,6 +96,8 @@ We now need to initialize a backend database service for GeoNode to store its ca
 
 There are three different deployment paths enumerated below depending on how you set up your backend database: ([4a](#step-5a)) Amazon Web Sevices (AWS) Relational Databse Service (RDS), ([4b](#step-4b)) PostGIS on a separate instance as GeoNode, or ([4c](#step-4c)) PostGIS on the same instance than GeoNode.
 
+If the server stalls on `cybergis-script-rogue.sh prod [conf_standalone|conf_application]`, run `source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'` from the command line and then run again.
+
 ####Step 4a
 In step 4a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQL AWS RDS instance take the following steps. 
 
