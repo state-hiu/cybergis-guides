@@ -16,6 +16,7 @@ sudo su -
 apt-get update
 apt-get upgrade
 apt-get install -y curl vim git
+apt-get install -y build-essential
 apt-get install -y postgresql-client-common postgresql-client-9.3
 apt-get install -y libgeos-dev libproj-dev
 cd /opt
