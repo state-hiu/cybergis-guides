@@ -11,6 +11,14 @@
 #Provision (virtual) machine
 #For AWS: Check https://cloud-images.ubuntu.com/releases/precise/release/
 
+#Vagrant ONLY
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
+
 #Step 1
 sudo su -
 apt-get update
