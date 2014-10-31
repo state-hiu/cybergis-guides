@@ -16,7 +16,7 @@ sudo su -
 apt-get update
 apt-get upgrade
 apt-get install -y curl vim git
-apt-get install -y postgresql-client-common postgresql-client-9.1
+apt-get install -y postgresql-client-common postgresql-client-9.3
 apt-get install -y libgeos-dev libproj-dev
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
