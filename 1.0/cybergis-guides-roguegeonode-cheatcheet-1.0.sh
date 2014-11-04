@@ -51,12 +51,24 @@ source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 #To confirm that PostGIS was set up correctly, try logging into the databse with the command below.
 #PGPASSWORD='XXX' psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --d=template_postgis
-cybergis-script-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password> <gs_baseline>
+cybergis-script-geoshape-configure.py
+--env 'aws' \
+--fqdn FQDN \
+--banner \
+--banner_text BANNER_TEXT \
+--banner_color_text BANNER_COLOR_TEXT \
+--banner_color_background BANNER_COLOR_BACKGROUND \
+--db_host RDS_ENDPOINT \
+--db_ip 'false' \
+--db_port '5432' \
+--db_pass RDS_PASSWORD \
+--gs_data_url GS_DATA_URL  \
+--gs_data_branch GS_DATA_BRANCH \
 
 #Step 4b (Remote Database)
 
 #Step 4c (Local Database / Standalone)
-cybergis-script-rogue.sh prod conf_standalone <fqdn> <gs_baseline>
+cybergis-script-geoshape-configure.py --fqdn FQDN
 
 #Step 5
 cybergis-script-rogue.sh prod provision
