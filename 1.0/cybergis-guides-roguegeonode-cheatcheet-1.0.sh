@@ -41,11 +41,11 @@ cybergis-script-rogue.sh prod user
 #Step 3
 cybergis-script-rogue.sh prod rvm
 cybergis-script-rogue.sh prod bundler
+source /usr/local/rvm/scripts/rvm; bundle install; berks install;
+#If the previous line stalls, then run the below line and then rerun.
+source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'
 
 #Step 4
-#If cybergis-script-init-rogue.sh prod [conf_standalone|conf_application] stalls, 
-#then run the below line and then rerun.
-source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'
 
 #Step 4a (RDS)
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
