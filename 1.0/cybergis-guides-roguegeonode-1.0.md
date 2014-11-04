@@ -107,7 +107,7 @@ Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/
 cybergis-script-rogue.sh prod bundler
 ```
 
-After RVM and Bundler are installed, we can now install the GEM dependencies with.  Execute the following line:
+After RVM and Bundler are installed, we can now install the GEM dependencies with the following line:
 
 ```
 source /usr/local/rvm/scripts/rvm; bundle install; berks install;
