@@ -56,7 +56,7 @@ Installation only requires 5 simple steps.  Most steps only require executing on
 
 1. Install CyberGIS Scripts.  [[Jump]](#step-1)
 2. Create ROGUE user account.  [[Jump]](#step-2)
-3. Install RVM (Ruby Version Manager) and Bundler.  [[Jump]](#step-3)
+3. Install RVM (Ruby Version Manager), Bundler, and GEMs.  [[Jump]](#step-3)
 4. Initialize Database & Configure Server. [[Jump]](#step-4)
 5. Provision [[Jump]](#step-5)
 6. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
@@ -105,6 +105,12 @@ Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/
 
 ```
 cybergis-script-rogue.sh prod bundler
+```
+
+After RVM and Bundler are installed, we can now install the GEM dependencies with.  Execute the following line:
+
+```
+source /usr/local/rvm/scripts/rvm; bundle install; berks install;
 ```
 
 ###Step 4
