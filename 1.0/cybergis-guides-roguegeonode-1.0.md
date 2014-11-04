@@ -149,13 +149,29 @@ Next, we need to configure our application server to use the RDS database.
 Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
 
 ```
-cybergis-script-rogue.sh prod conf_application <fqdn> <db_host> <db_ip> <db_port> <db_password> <gs_baseline>
+cybergis-script-geoshape-configure.py
+--env 'aws' \
+--fqdn FQDN \
+--db_host RDS_ENDPOINT \
+--db_ip 'false' \
+--db_port '5432' \
+--db_pass RDS_PASSWORD \
+--gs_data_url GS_DATA_URL  \
+--gs_data_branch GS_DATA_BRANCH \
 ```
 
 For example,
 
 ```
-cybergis-script-rogue.sh prod conf_application example.com XXX.rds.amazonaws.com false 5432 '123ABC' 'master'
+cybergis-script-geoshape-configure.py
+--env 'aws' \
+--fqdn 'example.com' \
+--db_host 'XXX.rds.amazonaws.com' \
+--db_ip 'false' \
+--db_port '5432' \
+--db_pass '123ABC' \
+--gs_data_url 'https://github.com/state-hiu/geoserver_data.git'  \
+--gs_data_branch 'master' \
 ```
 
 **Important!!**  Before provisioning, we also need to slightly change `geoshape_external_db.json`.  Add `"recipe[rogue::database]"`, to `/opt/rogue-chef-repo/roles/geoshape_external_db.json` between geoshape_base and rogue.  This is a hotfix, until a RDS (database as a service) role is created.
@@ -178,13 +194,13 @@ psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 For basic installations where PostGIS and GeoNode are on the same instance also referred to as a standalone deployment, configure with the following command.
 
 ```
-cybergis-script-rogue.sh prod conf_standalone <fqdn> <gs_baseline>
+cybergis-script-geoshape-configure.py --fqdn FQDN
 ```
 
 For example,
 
 ```
-cybergis-script-rogue.sh prod conf_standalone example.com 'master'
+cybergis-script-geoshape-configure.py --fqdn example.com
 ```
 
 ###Step 5
