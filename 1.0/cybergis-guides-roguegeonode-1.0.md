@@ -107,7 +107,7 @@ Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/
 cybergis-script-rogue.sh prod bundler
 ```
 
-After RVM and Bundler are installed, we can now install the GEM dependencies with the following line:
+After RVM and Bundler are installed, we can now install the GEM dependencies with the following line.  If the following line stalls, run `source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'` from the command line and then run again.
 
 ```
 source /usr/local/rvm/scripts/rvm; bundle install; berks install;
@@ -118,8 +118,6 @@ source /usr/local/rvm/scripts/rvm; bundle install; berks install;
 We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  We'll then configure the chef configuration files.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
 
 There are three different deployment paths enumerated below depending on how you set up your backend database: ([4a](#step-5a)) Amazon Web Sevices (AWS) Relational Databse Service (RDS), ([4b](#step-4b)) PostGIS on a separate instance as GeoNode, or ([4c](#step-4c)) PostGIS on the same instance than GeoNode.
-
-If the server stalls on `cybergis-script-geoshape-configure.py`, run `source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'` from the command line and then run again.
 
 ####Step 4a
 In step 4a, you can install PostGIS on AWS RDS.  To install PostGIS ontop of a PostgreSQL AWS RDS instance take the following steps. 
