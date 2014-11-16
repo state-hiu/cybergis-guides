@@ -84,7 +84,7 @@ Or to launch it silently in the background, execute the following:
 
 ```
 cd ~/ws/gs/geoserver-2.6-RC1/
-./bin/startup.sh 2>&1 > /dev/null &
+./bin/startup.sh  >/dev/null 2>&1  &
 ```
 
 ##Initializing Extracts
