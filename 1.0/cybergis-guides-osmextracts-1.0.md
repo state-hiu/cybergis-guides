@@ -49,6 +49,7 @@ apt-get install -y curl vim git unzip
 apt-get install -y postgresql-client-common postgresql-client-9.1
 apt-get install -y libgeos-dev libproj-dev
 apt-get install -y gdal-bin
+apt-get install -y python-imaging
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
