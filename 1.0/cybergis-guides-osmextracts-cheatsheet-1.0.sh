@@ -5,7 +5,7 @@
 #Use the full guide found at https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-1.0.md
 #if you wish to walk through the installation.
 #============#
-#Important!  This is not designed as a single bash script.  You'll still need to execute lines one by one.
+#Important!  This is not designed to be executed as a single bash script.  You'll still need to execute lines one by one.
 #============#
 #Step 1
 apt-get update
