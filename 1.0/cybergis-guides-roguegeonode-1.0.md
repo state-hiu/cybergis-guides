@@ -89,7 +89,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 ###Step 2
 
-Log out completely and log back in.  Remember to become root again (`sudo su -`).  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.  You don't execute any commands as the "rogue" user during installation.  Execute every command as root.
+Log out completely and log back in (or `source /etc/profile.d/cybergis-scripts.sh`).  Remember to become root again (`sudo su -`).  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.  You don't execute any commands as the "rogue" user during installation.  Execute every command as root.
 
 ```
 cybergis-script-rogue.sh prod user
