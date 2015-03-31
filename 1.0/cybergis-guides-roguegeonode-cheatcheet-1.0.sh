@@ -69,7 +69,9 @@ cybergis-script-geoshape-configure.py
 cybergis-script-geoshape-configure.py --fqdn FQDN
 
 #Step 5
+cybergis-script-rogue.sh prod gems
 cybergis-script-rogue.sh prod provision
+##
 vim /etc/hosts/
 vim /var/lib/geonode/rogue_geonode/rogue_geonode/local_settings.py
 #Disable GZIP Compression if Needed
