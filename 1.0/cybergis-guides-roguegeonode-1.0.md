@@ -181,7 +181,7 @@ cybergis-script-geoshape-configure.py
 
 **To Be Completed**
 
-In step 5b, you can install the PostGIS backend on a separate virutal machine or instance.
+In step 4b, you can install the PostGIS backend on a separate virutal machine or instance.
 
 
 Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
