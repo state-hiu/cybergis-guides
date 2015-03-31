@@ -206,6 +206,12 @@ cybergis-script-geoshape-configure.py --fqdn example.com
 
 ###Step 5
 
+Next, let's install GEM Dependencies.  The following command will run `bundle install` and `berks install` to download dependencies.  The one exception is that it will install libgecode-dev via `apt-get install` so it does not have to build from source, which takes an extremely long time.  The command is: `apt-get install -y libgecode-dev; USE_SYSTEM_GECODE=1 gem install dep-selector-libgecode -v '1.0.2'`.  If you customize your install and do not use the following line to install GEMs, be sure to run the `apt-get ...; USE_SYSTEM_GEOCODE=1 ...;` line you run `bundle install`.
+
+```
+cybergis-script-rogue.sh prod provision
+```
+
 Finally, we can now provision our instance.  This will install all the custom ROGUE componenets and will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
 ```
