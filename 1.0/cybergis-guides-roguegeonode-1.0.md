@@ -110,12 +110,6 @@ Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/
 cybergis-script-rogue.sh prod bundler
 ```
 
-After RVM and Bundler are installed, we can now install the GEM dependencies with the following line.  If the following line stalls, run `source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'` from the command line and then run again.
-
-```
-source /usr/local/rvm/scripts/rvm; bundle install; berks install;
-```
-
 ###Step 4
 
 We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  We'll then configure the chef configuration files.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
