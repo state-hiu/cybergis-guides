@@ -42,9 +42,6 @@ cybergis-script-rogue.sh prod user
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 cybergis-script-rogue.sh prod rvm
 cybergis-script-rogue.sh prod bundler
-source /usr/local/rvm/scripts/rvm; bundle install; berks install;
-#If the previous line stalls, then run the below line and then rerun.
-source /usr/local/rvm/scripts/rvm; gem install dep-selector-libgecode -v '1.0.2'
 
 #Step 4
 
