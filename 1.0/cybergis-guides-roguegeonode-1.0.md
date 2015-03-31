@@ -100,6 +100,7 @@ cybergis-script-rogue.sh prod user
 You're still root right?  We now need to install RVM (Ruby Version Manager).  RVM is used to install Ruby GEM dependencies.  Chef also uses ruby to manage the integration of custom ROGUE components with a vanilla GeoNode.
 
 ```
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 cybergis-script-rogue.sh prod rvm
 ```
 
