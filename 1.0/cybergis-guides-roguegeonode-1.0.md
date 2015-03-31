@@ -4,7 +4,7 @@ ROGUE GeoNode Guide, Version 1.0
 | Guides: | [Vanilla GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-vanillageonode-1.0.md) | [ROGUE GeoNode](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-1.0.md) |  [OpenGeo Suite](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-opengeosuite-1.0.md) |   [OSM Extracts](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-osmextracts-1.0.md) |
 | ---- |  ---- | ---- | ---- |  ---- |
 
-## Description
+## Descriptions
 
 This guide provides instructions for installing and managing a ROGUE GeoNode instance in a production environment.  You can find information about installing a vanilla GeoNode without the advanced data editing and sharing technology at [http://geonode.org/](http://geonode.org/).  You can find more information about ROGUE below and at [http://geoshape.org/](http://geoshape.org/).  Use the directions found at [http://geoshape.org/](http://geoshape.org/) for deploying a ROGUE GeoNode in a development environment.
 
@@ -26,7 +26,7 @@ guide itself, please submit them to this repo at [https://github.com/state-hiu/c
 
 Before you begin the installation process, you'll need to provision a virtual or physical machine.  ROGUE GeoNode will run on [Amazon Web Services (AWS)](#aws-machines), [Vagrant](#vagrant-machines), and almost any type of virtual machine.
 
-Most VMs, AMIs, boxes, etc. of Ubuntu 12.04.X won't be 100% up to date when provisioned.  Although not necessary, you should upgrade all your packages as soon as you SSH into the machine for the first time and before you begin the installation process.  In Ubuntu that is: `sudo apt-get update; sudo-apt-get upgrade;`.
+Most VMs, AMIs, boxes, etc. of Ubuntu 12.04.X won't be 100% up to date when provisioned.  Although not necessary, you should upgrade all your packages as soon as you SSH into the machine for the first time and before you begin the installation process.  In Ubuntu that is: `sudo apt-get update; sudo apt-get upgrade;`.
 
 ### AWS Machines
 If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 12.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/precise/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
