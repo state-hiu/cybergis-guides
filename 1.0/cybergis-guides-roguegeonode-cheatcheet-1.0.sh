@@ -32,6 +32,9 @@ apt-get install -y libgeos-dev libproj-dev
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
 cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
+
+source /etc/profile.d/cybergis-scripts.sh
+#or
 exit
 
 #Step 2
