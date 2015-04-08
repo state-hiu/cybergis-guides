@@ -225,7 +225,7 @@ After provisioning or updating templates, you might want to check the `/etc/host
 
 **GZIP Compression Issue**
 
-Also, you may need to disable GZIP compression, depending on network configuration.  To do so, comment out the `GZIP Compression Filter` in `/var/lib/tomcat7/webapps/geoserver/WEB-INF/web.xml` and `/var/lib/geonode/rogue_geonode/geoserver_ext/src/main/webapp/WEB-INF/web.xml`.
+GZIP is currently broken in GeoGig.  The ROGUE cookbook disables it by default (https://github.com/ROGUE-JCTD/rogue-cookbook/issues/29).  If you are using a different cookbook or initialization process, you may need to disable GZIP compression.  To do so, comment out the `GZIP Compression Filter` in `/var/lib/tomcat7/webapps/geoserver/WEB-INF/web.xml` and `/var/lib/geonode/rogue_geonode/geoserver_ext/src/main/webapp/WEB-INF/web.xml`.
 
 After installation is complete, go to your GeoNode in a browser to confirm it installed properly.  The default user and password is admin and admin.  If installation was successful, continue to install baseline servers and remotes.
 
