@@ -27,7 +27,7 @@ guide itself, please submit them to this repo at [https://github.com/state-hiu/c
 Before you begin the installation process, you'll need to provision a virtual or physical machine.  Vanilla GeoNode will run on [Amazon Web Services (AWS)](#aws-machines), [Vagrant](#vagrant-machines), and almost any type of virtual machine.
 
 ### AWS Machines
-If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 14.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/trusty/release/](https://cloud-images.ubuntu.com/releases/precise/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
+If you are provisioning an instance using Amazon Web Services, we recommend you use the baseline Ubuntu 14.04 LTS AMI managed by Ubuntu/Canonical.  You can lookup the most recent ami code on this page: [https://cloud-images.ubuntu.com/releases/trusty/release/](https://cloud-images.ubuntu.com/releases/trusty/release/).  Generally speaking, you should use the 64-bit EBS-SSD AMI for ROGUE GeoNode.
 
 ### Vagrant Machines
 
@@ -91,7 +91,7 @@ apt-get update
 You can check that you added the GeoNode apt repo to your sources correctly, by checking the sources list with:
 
 ```
-cat /etc/apt/sources.list.d/geonode-release-precise.list
+cat /etc/apt/sources.list.d/geonode-release-trusty.list
 ```
 
 and by checking the apt cache with the following command.
