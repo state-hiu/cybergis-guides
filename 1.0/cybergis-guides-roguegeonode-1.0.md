@@ -35,7 +35,7 @@ If you are provisioning an instance using Amazon Web Services, we recommend you 
 
 If you are installing ROGUE GeoNode on a Vagrant VM it is a good idea to assert the correct locale through the following code block.  Most other builds, such as the Amazon AWS Ubuntu images, do not need this step as they are configured properly.  See issue 985 for explanation at [https://github.com/GeoNode/geonode/issues/985](https://github.com/GeoNode/geonode/issues/985).
 
-```
+```shell
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -76,7 +76,7 @@ Installation only requires 5 simple steps.  Most steps only require executing on
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) GitHub repo. As root (`sudo su -`) execute the following commands.
 
-```
+```shell
 apt-get update
 apt-get install -y curl vim git
 #apt-get install -y build-essential Only for Ubuntu 14.04
@@ -92,7 +92,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 Log out completely and log back in (or `source /etc/profile.d/cybergis-scripts.sh`).  Remember to become root again (`sudo su -`).  The CyberGIS scripts should now be in every user's path.  We now need to create an account to run GeoNode.  You don't execute any commands as the "rogue" user during installation.  Execute every command as root.
 
-```
+```shell
 cybergis-script-rogue.sh prod user
 ```
 
@@ -100,14 +100,14 @@ cybergis-script-rogue.sh prod user
 
 You're still root right?  We now need to install RVM (Ruby Version Manager).  RVM is used to install Ruby GEM dependencies.  Chef also uses ruby to manage the integration of custom ROGUE components with a vanilla GeoNode.
 
-```
+```shell
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 cybergis-script-rogue.sh prod rvm
 ```
 
 Next, install the Ruby GEM Bundler.  See [http://bundler.io/](http://bundler.io/) for more info.
 
-```
+```shell
 cybergis-script-rogue.sh prod bundler
 ```
 
@@ -128,19 +128,19 @@ Another consideration when using AWS RDS is  the maintenance and backup windows.
 
 Once you've deployed a PostgreSQL RDS instance, you only need to execute the one following command to initialize the database.  The command was built from AWS help docs found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.PostGIS).  Execute this command from within the GeoNode instance.  Make sure you've configured the RDS DB security group to allow access from the GeoNode instance.  This command will initialize the `template_postgis` database.  Step 6 will actually build the `geonode` and `geonode_imports` database.
 
-```
+```shell
 cybergis-script-postgis.sh prod install rds <host> 5432 postgres <password> template_postgis template0
 ```
 
 The password variable should be encased in single quotes to ensure it is treated as a literal.  For example,
 
-```
+```shell
 cybergis-script-postgis.sh prod install rds XXX.rds.amazonaws.com 5432 postgres 'd&^$%jfn' template_postgis template0
 ```
 
 To confirm the template_postgis database was created correctly, you can log into the database from the shell with:
 
-```
+```shell
 PGPASSWORD='XXX' psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --d=template_postgis
 ```
 
@@ -150,7 +150,7 @@ Next, we need to configure our application server to use the RDS database.
 
 Do not forget to include the fully qualified domain name (including subdomains) for the **fqdn** parameter, such as hiu-maps.net or example.com. Do not include a port, protocol, or context path.
 
-```
+```shell
 cybergis-script-geoshape-configure.py
 --env 'aws' \
 --fqdn FQDN \
@@ -164,7 +164,7 @@ cybergis-script-geoshape-configure.py
 
 For example,
 
-```
+```shell
 cybergis-script-geoshape-configure.py
 --env 'aws' \
 --fqdn 'example.com' \
@@ -187,7 +187,7 @@ In step 4b, you can install the PostGIS backend on a separate virutal machine or
 
 Assuming the DB security group has allowed access from the ROGUE GeoNode instance.  Connect to the database instance.
 
-```
+```shell
 psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 ```
 
@@ -195,13 +195,13 @@ psql --host=XXX.rds.amazonaws.com --port=5432 --username postgres --password
 
 For basic installations where PostGIS and GeoNode are on the same instance also referred to as a standalone deployment, configure with the following command.
 
-```
+```shell
 cybergis-script-geoshape-configure.py --fqdn FQDN
 ```
 
 For example,
 
-```
+```shell
 cybergis-script-geoshape-configure.py --fqdn example.com
 ```
 
@@ -211,13 +211,13 @@ Next, let's install GEM Dependencies.  The following command will run `bundle in
 
 The one exception to using `bundle install` is that it will install libgecode-dev via `apt-get install` so it does not have to build from source, which takes an extremely long time.  The command is: `apt-get install -y libgecode-dev; USE_SYSTEM_GECODE=1 gem install dep-selector-libgecode -v '1.0.2'`.  If you customize your install and do not use the following line to install GEMs, be sure to run the `apt-get ...; USE_SYSTEM_GEOCODE=1 ...;` line **before** you run `bundle install`.
 
-```
+```shell
 cybergis-script-rogue.sh prod gems
 ```
 
 Finally, we can now provision our instance.  This will install all the custom ROGUE componenets and will take the most time to execute, at least 5 minutes... even on m3.xlarge AWS instances.  Chef will download and install all remaining dependencies before installing GeoNode itself.
 
-```
+```shell
 cybergis-script-rogue.sh prod provision
 ```
 
@@ -235,7 +235,7 @@ If you add external servers to the baseline, they'll, by default, appear in MapL
 
 To add a geonode server, include the protocol, domain, and port, for example `cybergis-script-rogue.sh prod server geonode ExampleName http://example.com`.  The included parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-rogue.sh prod server wms ExampleName http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-rogue.sh prod server tms ExampleName http://hiu-maps.net/hot/1.0.0/`.
 
-```
+```shell
 cybergis-script-rogue.sh prod server [geonode|wms|tms] <name> <url>
 ```
 ###Step 7
@@ -246,19 +246,19 @@ You'll want to install remotes, next.  Remotes enable users to sync data among m
 
 To add a remote GeoNode use, 
 
-```
+```shell
 cybergis-script-rogue.sh prod remote <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
 ```
 
 To add a remote GeoGit repo (server agnostic),
 
-```
+```shell
 cybergis-script-rogue.sh prod remote2 <user:password> <repoURL> <remoteName> <remoteURL> <remoteUser> <remotePassword>
 ```
 
 You can confirm the remotes were added successfully, but executing the following command agains the GeoGit Web API.  You should see an xml output of all configured remotes. 
 
-```
+```shell
 curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName/remote?list=true&verbose=true'
 ```
 
@@ -268,19 +268,19 @@ curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName
 
 To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
 
-```
+```shell
 cybergis-script-rogue.sh prod aws
 ```
 
 To add the relevant settings to the GeoNode settings.py file, run the following command.  You'll most likely need to wrap the sns_topic string with double or single quotes to correctly pass the arguments.
 
-```
+```shell
 cybergis-script-rogue.sh prod sns <aws_access_key_id> <aws_secret_access_key> <sns_topic>
 ```
 
 You can test SNS with the following code block.  You need to use GeoNode's python interpreter to correctly load the GeoNode settings from the command line.
 
-```
+```shell
 export DJANGO_SETTINGS_MODULE=rogue_geonode.settings
 /var/lib/geonode/bin/python /opt/cybergis-scripts.git/lib/rogue/post_commit_hook.py <commit_message>
 ```
@@ -290,19 +290,19 @@ Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very
 
 You can execute a push, pull, or two-way (duplex) cron job.  The three options for direction are: `push, pull, and duplex`.
 
-```
+```shell
 cybergis-script-rogue.sh prod cron <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> [hourly|daily|weekly|monthly]
 ```
 
 You can also sync with a custom interval using standard crontab syntax.  See the relevant wikipedia article for more information [http://en.wikipedia.org/wiki/Cron](http://en.wikipedia.org/wiki/Cron).
 
-```
+```shell
 cybergis-script-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> <frequency>
 ```
 
 The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGit sync every 5 minutes.
 
-```
+```shell
 cybergis-script-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' dummy dummy@example.com '*/5 * * * *'
 ```
 
@@ -314,7 +314,7 @@ The sync commands are added to the file in the cron.d directory at `/etc/cron.d/
 
 The first thing we need to do make sure we have a repository to store our OpenStreetMap (OSM) mappings.  You can clone directly from `cybergis-osm-mappings` or set up a fork.
 
-```
+```shell
 cd /opt
 git clone https://github.com/state-hiu/cybergis-osm-mappings.git cybergis-osm-mappings.git
 #No build scripts yet but may be in the future.
@@ -326,20 +326,20 @@ git clone https://github.com/state-hiu/cybergis-osm-mappings.git cybergis-osm-ma
 
 The first thing we need to do make sure we have a repo of the CyberGIS styles on the file filesystem.  You can clone directly from `cybergis-styles`, set up a fork, or work with your own folder of styles.
 
-```
+```shell
 cd /opt
 git clone https://github.com/state-hiu/cybergis-styles.git cybergis-styles.git
 ```
 
 Once you've downloaded a copy of the styles, we'll import them into GeoServer using a python wrapper for the REST interface.
 
-```
+```shell
 cybergis-script-geoserver-import-styles.py --path /opt/cybergis-styles.git/styles --geoserver <GEOSERVER> --prefix "cybergis" --username <username --password <password>
 ```
 
 Then run updatelayers, so the new styles are visible in GeoNode.
 
-```
+```shell
 cd /var/lib/geonode/rogue_geonode
 bin/python manage.py updatelayers
 ```
