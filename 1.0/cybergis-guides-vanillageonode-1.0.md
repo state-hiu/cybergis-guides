@@ -33,7 +33,7 @@ If you are provisioning an instance using Amazon Web Services, we recommend you 
 
 If you are installing vanilla GeoNode on a Vagrant VM it is a good idea to assert the correct locale through the following code block.  Most other builds, such as the Amazon AWS Ubuntu images, do not need this step as they are configured properly.  See issue 985 for explanation at [https://github.com/GeoNode/geonode/issues/985](https://github.com/GeoNode/geonode/issues/985).
 
-```
+```shell
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -68,7 +68,7 @@ No known issues
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.
 
-```
+```shell
 apt-get update
 apt-get install -y curl vim git
 apt-get install -y python-software-properties
@@ -83,20 +83,20 @@ The second step is to install the GeoNode apt repository.
 
 The following code block will download and configure the GeoNode apt repository.
 
-```
+```shell
 add-apt-repository ppa:geonode/release
 apt-get update
 ```
 
 You can check that you added the GeoNode apt repo to your sources correctly, by checking the sources list with:
 
-```
+```shell
 cat /etc/apt/sources.list.d/geonode-release-trusty.list
 ```
 
 and by checking the apt cache with the following command.
 
-```
+```shell
 apt-cache search geonode
 ```
 
@@ -104,7 +104,7 @@ apt-cache search geonode
 
 Make sure you've ran apt-get after adding the GeoNode apt repo.  To install vanilla GeoNode, just run the following command.
 
-```
+```shell
 apt-get install geonode
 ```
 
@@ -112,7 +112,7 @@ apt-get install geonode
 
 By default, GeoNode does not create an admin account.  The following command will create an admin account.  We **strongly recommend** just using admin/admin and changing the password later.
 
-```
+```shell
 geonode createsuperuser
 ```
 
@@ -120,6 +120,6 @@ geonode createsuperuser
 
 To ehnace security, by default, GeoNode does not respond to any url.  To enable GeoNode to respond to its IP address or domain execute the following command.
 
-```
+```shell
 geonode-updateip <ip/domain>
 ```
