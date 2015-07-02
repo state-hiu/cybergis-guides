@@ -48,7 +48,7 @@ No known issues
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) repo.  As root (`sudo su -`) execute the following commands.
 
-```
+```shell
 apt-get update
 apt-get install -y curl vim git
 cd /opt
@@ -60,7 +60,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 The second step is to download and configure the OpenGeo Suite apt repo.  The following code block will download and configure the OpenGeo Suite apt repo.
 
-```
+```shell
 wget -qO - http://apt.opengeo.org/gpg.key | apt-key add -
 echo "deb http://apt.opengeo.org/suite/v4/ubuntu/ precise main" > /etc/apt/sources.list.d/opengeo.list
 apt-get update
@@ -68,13 +68,13 @@ apt-get update
 
 You can check that you added the OpenGeo Suite apt repo to your sources correctly, by checking the sources list with:
 
-```
+```shell
 cat /etc/apt/sources.list.d/opengeo.list | tail -n 4
 ```
 
 and by checking the apt cache with the following command.
 
-```
+```shell
 apt-cache search opengeo
 ```
 
@@ -82,7 +82,7 @@ apt-cache search opengeo
 
 Confirm you ran `apt-get update` so that the OpenGeo Suite apt repo is discovered.  To install the OpenGeo Suite, run the following command.
 
-```
+```shell
 apt-get install opengeo
 ```
 
@@ -94,7 +94,7 @@ You should now remove sensitive documents that are left on disk after a fresh in
 
 You need to remove the master password file.  Before you remove this file, be sure to copy the password into secure storage (piece of paper,  usb stick, encrypted volume, etc.).  You are able to login with the master password as the `root` user with username `root` (this is different than the default `admin` user).
 
-```
+```shell
 cat /var/lib/opengeo/geoserver/security/masterpw.info
 rm -f /var/lib/opengeo/geoserver/security/masterpw.info
 rm -f /var/lib/opengeo/geoserver/security/users.properties.old
@@ -104,19 +104,19 @@ rm -f /var/lib/opengeo/geoserver/security/users.properties.old
 
 You're still root right?  Now we need to configure GeoServer so that it has enough memory.  If you do not tune GeoServer, then your risk out of memory errors on large WMS requests.  You can tun GeoServer with the following command.  The `repo` paramter is the path to a git repo that is backing up the /etc/defaults directory, so that you can roll back to a previous version if necessary.  The `Xmx` parameter stands for the maximum JVM heap size.  See [http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.  Other JVM options will be added automatically in align with the GeoServer performance documentation provided at [http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html](http://suite.opengeo.org/opengeo-docs/sysadmin/production/performance.html).
 
-```
+```shell
 cybergis-script-geoserver.sh prod tune <repo> <Xmx>
 ```
 
 The git repo path should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will configure the JVM so that GeoServer can use up to 12 gigabytes of memory for it's heap.
 
-```
+```shell
 cybergis-script-geoserver.sh prod tune '/cybergis/misc/git/repo/etc_defaults' 12G
 ```
 
 You'll also want to add swap space to the instance so GeoServer (Tomcat) can absorb high-memory WMS calls without crashing.  See the Ubuntu SwapFaq article for more information at [https://help.ubuntu.com/community/SwapFaq](https://help.ubuntu.com/community/SwapFaq).  If using AWS instance stores (aka /mnt or ephmeral storage), be sure to check how much space is available from within your instance (`df -h` or `sudo fdisk -l`) and [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#StorageOnInstanceTypes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#StorageOnInstanceTypes).
 
-```
+```shell
 cybergis-script-ec2.sh swap 32g /mnt/swap_32g.swap
 ```
 
@@ -124,7 +124,7 @@ You can confirm that the swap was added correctly, with `free -g`.  You should s
 
 To delete a swap file, run:
 
-```
+```shell
 cybergis-script-ec2.sh delete_swap /mnt/swap_32g.swap
 ```
 
