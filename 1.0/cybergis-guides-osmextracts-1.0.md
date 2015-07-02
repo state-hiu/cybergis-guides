@@ -43,7 +43,7 @@ No known issues
 
 The first step is install the CyberGIS scripts from the [cybergis-scripts](https://github.com/state-hiu/cybergis-scripts) GitHub repo. As root (`sudo su -`) execute the following commands.
 
-```
+```shell
 apt-get update
 apt-get install -y curl vim git unzip
 apt-get install -y postgresql-client-common postgresql-client-9.1
@@ -59,7 +59,7 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 
 Install the "geogig" environment.  This will install cybergis-styles and cybergis-osm-mappings to `/opt`.
 
-```
+```shell
 cybergis-script-env.sh geogig install
 ```
 
@@ -67,7 +67,7 @@ cybergis-script-env.sh geogig install
 
 Install the "client" environment.  This will install Apache and cybergis-client-examples to `/opt`.
 
-```
+```shell
 cybergis-script-env.sh client install
 ```
 
@@ -75,14 +75,14 @@ cybergis-script-env.sh client install
 
 To start GeoServer with the GeoGig extension, exectue the following:
 
-```
+```shell
 cd ~/ws/gs/geoserver-2.6-RC1/
 ./bin/startup.sh
 ```
 
 Or to launch it silently in the background, execute the following:
 
-```
+```shell
 cd ~/ws/gs/geoserver-2.6-RC1/
 ./bin/startup.sh  >/dev/null 2>&1  &
 ```
@@ -93,14 +93,14 @@ We now need to write the actual configuration files for what area and time perio
 
 First, let's create a distinct folder to hold the scripts and configuration files for this extract project.
 
-```
+```shell
 mkdir ~/ws/repo
 mkdir ~/ws/repo/khulna
 ```
 
 Next, let's create a tab-separated values file containing the basic info on what we want to extract.
 
-```
+```shell
 touch ~/ws/repo/khulna/osm_extracts.tsv
 ```
 
@@ -113,7 +113,7 @@ id	datastore	extent	mapping
 ```
 Then, we need to create and execute the actual initialization script, such as the one below.
 
-```
+```shell
 #!/bin/bash
 #==========##========#
 BIN=/opt/cybergis-scripts.git/bin
@@ -145,7 +145,7 @@ python $BIN/cybergis-script-geogig-osm-init.py  -v --path $REPO --name $RN --use
 
 You can update the extracts manually or via a cron job.  You should create a script wrapper for `cybergis-script-geogig-osm-sync.py`, so it easier to manage the multiple input values.  You can execute the script at whatever frequency desired.  Although the Overpass API is relatively performant, there is some latency.  Please be careful if you set up cron jobs for large areas.  Updates to the OSM extracts are transactional.  Therefore, it is exceptionally hard to corrupt extracts, but you might waste a lot of system resources if you update at a high frequency.  Only set the interval to less than 5 minutes if you've run some tests.
 
-```
+```shell
 #!/bin/bash
 #==========##========#
 BIN=/opt/cybergis-scripts.git/bin
@@ -164,7 +164,7 @@ python  $BIN/cybergis-script-geogig-osm-sync.py false -v -gs $GS -ws $WS --usern
 
 We now need to set up a snapshotting routine to our manual or cron job processing.  You should snapshot the current data of your layers after you update their related GeoGig repos.  This is particularly useful for animations and publishing the data.  The below script, is just an example.  The script snapshots the current layers into PostGIS tables in AWS RDS, creates layers for the snapshots, and creates a layergroup for all coincident snapshots.
 
-```
+```shell
 #!/bin/bash
 #==========##========#
 BIN=/opt/cybergis-scripts.git/bin
@@ -235,7 +235,7 @@ python $BIN/cybergis-script-geoserver-publish-layergroup.py -gs $GS -ws $WS -lg 
 
 Go to cybergis client ("viewer") at `http://localhost/khulna/khulna.html`.  Get bbox, width, and height parameters from WMS layer.  Fill those in.  The below script uses the snapshots created in the previous section to generate animations of how the OSM data has changed over time.
 
-```
+```shell
 #!/bin/bash
 #==========##========#
 BIN=/opt/cybergis-scripts.git/bin
