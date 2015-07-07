@@ -73,7 +73,7 @@ cybergis-script-env.sh client install
 
 ##Running GeoServer
 
-To start GeoServer with the GeoGig extension, exectue the following:
+To start GeoServer with the GeoGig extension, execute the following:
 
 ```shell
 cd ~/ws/gs/geoserver-2.6-RC1/
