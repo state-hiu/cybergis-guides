@@ -9,7 +9,7 @@
 #============#
 #Provision Machine
 #Provision (virtual) machine
-#For AWS: Check https://cloud-images.ubuntu.com/releases/precise/release/
+#For AWS: Check https://cloud-images.ubuntu.com/releases/trusty/release/
 
 #Vagrant ONLY
 export LANGUAGE=en_US.UTF-8
@@ -25,9 +25,9 @@ sudo su -
 apt-get update
 apt-get upgrade
 apt-get install -y curl vim git
-#apt-get install -y build-essential Only for Ubuntu 14.04
-apt-get install -y postgresql-client-common postgresql-client-9.1
-#apt-get install -y postgresql-client-common postgresql-client-9.3 Only for Ubuntu 14.04
+apt-get install -y build-essential # Only for Ubuntu 14.04
+#apt-get install -y postgresql-client-common postgresql-client-9.1 # Only for Ubuntu 12.04
+apt-get install -y postgresql-client-common postgresql-client-9.3 # Only for Ubuntu 14.04
 apt-get install -y libgeos-dev libproj-dev
 cd /opt
 git clone https://github.com/state-hiu/cybergis-scripts.git cybergis-scripts.git
