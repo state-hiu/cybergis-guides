@@ -12,7 +12,7 @@ This guide provides instructions for installing and managing a ROGUE GeoNode ins
 In case you've walked through the guide before and understand the installation process, there is a cheat sheet available for this guide at [https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-cheatcheet-1.0.sh](https://github.com/state-hiu/cybergis-guides/blob/master/1.0/cybergis-guides-roguegeonode-cheatcheet-1.0.sh).  The cheat sheet contains the same exact steps in the guide.  It is designed for quick access and copy/paste into a shell.  You still should execute commands line by line.  The cheat sheet is not "executable".
 
 ### CyberGIS
-The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, GeoGit, OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
+The Humanitarian Information Unit has been developing a sophisticated geographic computing infrastructure referred to as the CyberGIS. The CyberGIS provides highly available, scalable, reliable, and timely geospatial services capable of supporting multiple concurrent projects.  The CyberGIS relies on primarily open source projects, such as PostGIS, GeoServer, GDAL, [GeoGig](http://geogig.org/), OGR, and OpenLayers.  The name CyberGIS is dervied from the term geospatial cyberinfrastructure.
 
 ### ROGUE
 The Rapid Opensource Geospatial User-Driven Enterprise (ROGUE) Joint Capabilities Technology Demonstration (JCTD) is a two-year research & development project developing the technology for distributed geographic data creation and synchronization in a disconnected environement.  This new technology taken altogether is referred to as GeoSHAPE.  See [http://geoshape.org](http://geoshape.org) for more information.  HIU is leveraging the technology developed through ROGUE to build out the CyberGIS into a robust globally distributed infrastructure.
@@ -62,15 +62,15 @@ Installation only requires 5 simple steps.  Most steps only require executing on
 4. Initialize Database & Configure Server. [[Jump]](#step-4)
 5. Install GEMs & Provision [[Jump]](#step-5)
 6. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
-7. Add GeoGit remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
+7. Add GeoGig remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
 8. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-8)
-9. Add GeoGit sync cron jobs.  [[Jump]](#step-9)
+9. Add GeoGig sync cron jobs.  [[Jump]](#step-9)
 10. Add OpenStreetMap (OSM) extracts.  [[Jump]](#step-10)
 11. Add styles to baseline [[Jump]](#step-11)
 
 ###Kown Issues
-1.  This scipt is currently incompatible with the most recent GeoGit Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
-2.  The SNS hooks are not added to any repository .geogit/hooks directories, since the Geoserver GeoGit hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
+1.  This scipt is currently incompatible with the most recent GeoGig Web API implementation.  You can still add remotes manually through MapLoom.  **Do not execute step 6.**
+2.  The SNS hooks are not added to any repository .geogig/hooks directories, since the Geoserver GeoGig hooks implementation is not executing properly.  However, step 7 does not break the installation and you'll be able to test AWS SNS from the command line.
 
 ###Step 1
 
@@ -113,7 +113,7 @@ cybergis-script-rogue.sh prod bundler
 
 ###Step 4
 
-We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  We'll then configure the chef configuration files.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGit uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGit repositories.
+We now need to initialize a backend database service for GeoNode to store its catalog and feature data.  We'll then configure the chef configuration files.  GeoNode uses PostGIS to store its catalog and to store non-versioned geospatial data.  By default, GeoNode stores its catalog in the `geonode` database and stores features data in the `geonode_imports` database.  Importantly, GeoGig uses an embedded Berkeley Database.  Make sure to have your `geoserver_data` directory on a large volume, if you will be uploading rasters or large datasets into GeoGig repositories.
 
 There are three different deployment paths enumerated below depending on how you set up your backend database: ([4a](#step-5a)) Amazon Web Sevices (AWS) Relational Databse Service (RDS), ([4b](#step-4b)) PostGIS on a separate instance as GeoNode, or ([4c](#step-4c)) PostGIS on the same instance than GeoNode.
 
@@ -242,7 +242,7 @@ cybergis-script-rogue.sh prod server [geonode|wms|tms] <name> <url>
 
 **Adding remotes from this script is currently broken.  Use MapLoom instead.  DO NOT EXECUTE**
 
-You'll want to install remotes, next.  Remotes enable users to sync data among multiple ROGUE GeoNode instances.  You can add remotes using two commands.  The first command uses a url to the remote Geonode and remote repo name.  The second command uses a url to the repo directly.  The second command can be used once other implementations of the GeoGit Web API [http://geogit.org/docs/interaction/web-api.html](http://geogit.org/docs/interaction/web-api.html) are created.
+You'll want to install remotes, next.  Remotes enable users to sync data among multiple ROGUE GeoNode instances.  You can add remotes using two commands.  The first command uses a url to the remote Geonode and remote repo name.  The second command uses a url to the repo directly.  The second command can be used once other implementations of the GeoGig Web API [http://geogig.org/docs/interaction/web-api.html](http://geogig.org/docs/interaction/web-api.html) are created.
 
 To add a remote GeoNode use, 
 
@@ -250,16 +250,16 @@ To add a remote GeoNode use,
 cybergis-script-rogue.sh prod remote <user:password> <localRepoName> <localGeonodeURL> <remoteName> <remoteRepoName> <remoteGeoNodeURL> <remoteUser> <remotePassword>
 ```
 
-To add a remote GeoGit repo (server agnostic),
+To add a remote GeoGig repo (server agnostic),
 
 ```shell
 cybergis-script-rogue.sh prod remote2 <user:password> <repoURL> <remoteName> <remoteURL> <remoteUser> <remotePassword>
 ```
 
-You can confirm the remotes were added successfully, but executing the following command agains the GeoGit Web API.  You should see an xml output of all configured remotes. 
+You can confirm the remotes were added successfully, but executing the following command agains the GeoGig Web API.  You should see an xml output of all configured remotes. 
 
 ```shell
-curl -u user:password 'http://example.com/geoserver/geogit/geonode:localRepoName/remote?list=true&verbose=true'
+curl -u user:password 'http://example.com/geoserver/geogig/geonode:localRepoName/remote?list=true&verbose=true'
 ```
 
 **Adding remotes from this script is currently broken.  Use MapLoom instead.  DO NOT EXECUTE**
@@ -286,7 +286,7 @@ export DJANGO_SETTINGS_MODULE=rogue_geonode.settings
 ```
 
 ###Step 9
-Cron jobs can be set up to sync local and remote GeoGit repos.  This can be very useful when syncing large datasets in primarily one direction.  For example, pushing a large amount of data to a field office at 6am before staff arrive at work.  The script will also help organizations receive updates to their layers from others without having to share their own propriety information.  The script will only sync when there are no conflicts.  Support for automated notifications when the sync fails using AWS SNS will be implemented soon.  You can sync at a standard hourly, daily, weekly, or monthly interval using the following command.  You need to add a remote via MapLoom or step 7 (once the script is fixed) before hand.
+Cron jobs can be set up to sync local and remote GeoGig repos.  This can be very useful when syncing large datasets in primarily one direction.  For example, pushing a large amount of data to a field office at 6am before staff arrive at work.  The script will also help organizations receive updates to their layers from others without having to share their own propriety information.  The script will only sync when there are no conflicts.  Support for automated notifications when the sync fails using AWS SNS will be implemented soon.  You can sync at a standard hourly, daily, weekly, or monthly interval using the following command.  You need to add a remote via MapLoom or step 7 (once the script is fixed) before hand.
 
 You can execute a push, pull, or two-way (duplex) cron job.  The three options for direction are: `push, pull, and duplex`.
 
@@ -300,13 +300,13 @@ You can also sync with a custom interval using standard crontab syntax.  See the
 cybergis-script-rogue.sh prod cron2 <direction> <user> <password> <localRepoName> <remoteName> <authorname> <authoremail> <frequency>
 ```
 
-The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGit sync every 5 minutes.
+The frequency variable should be encased in single quotes to ensure it is treated as a literal.  For example, the script below will execute a GeoGig sync every 5 minutes.
 
 ```shell
 cybergis-script-rogue.sh prod cron2 pull admin admin 'geonode:incidents_repo' 'AWS' dummy dummy@example.com '*/5 * * * *'
 ```
 
-The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogit_sync`.  The concurrent commands execute in order of when they were added.  You can double check that the commands executed properly, manually adds sync commands, remove commands, ior otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGit--it effectively uses network bandwith.
+The sync commands are added to the file in the cron.d directory at `/etc/cron.d/geogig_sync`.  The concurrent commands execute in order of when they were added.  You can double check that the commands executed properly, manually adds sync commands, remove commands, ior otherwise edit existing commands.  Be careful to not create duplicate cron jobs, as you'll remove a great benfit of GeoGig--it effectively uses network bandwith.
 
 ###Step 10
 
