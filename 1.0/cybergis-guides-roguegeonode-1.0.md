@@ -63,7 +63,7 @@ Installation only requires 5 simple steps.  Most steps only require executing on
 5. Install GEMs & Provision [[Jump]](#step-5)
 6. Add external servers to baseline (GeoNodes, WMS, and TMS).  [[Jump]](#step-6)
 7. Add GeoGig remotes to baseline (other ROGUE GeoNodes) (**CURRENTLY BROKEN DO NOT EXECUTE.  Use MapLoom instead**)
-8. Add post-commit AWS SNS hooks to repos.  [[Jump]](#step-8)
+8. Add post-commit AWS [SNS](https://aws.amazon.com/sns/) hooks to repos.  [[Jump]](#step-8)
 9. Add GeoGig sync cron jobs.  [[Jump]](#step-9)
 10. Add OpenStreetMap (OSM) extracts.  [[Jump]](#step-10)
 11. Add styles to baseline [[Jump]](#step-11)
@@ -231,9 +231,9 @@ After installation is complete, go to your GeoNode in a browser to confirm it in
 
 ###Step 6
 
-If you add external servers to the baseline, they'll, by default, appear in MapLoom, without requiring each user to add the url manually for each new map.  The following command will add the given server infromation to the settings.py file at the end of  `/var/lib/geonode/rogue_geonode/rogue_geonode/settings.py`.
+If you add external servers to the baseline, they'll, by default, appear in MapLoom.  Therefore, users will not need to manually add server urls for each map they create.  Server information is stored at the end of `/var/lib/geonode/rogue_geonode/rogue_geonode/settings.py`.
 
-To add a geonode server, include the protocol, domain, and port, for example `cybergis-script-rogue.sh prod server geonode ExampleName http://example.com`.  The included parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-rogue.sh prod server wms ExampleName http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-rogue.sh prod server tms ExampleName http://hiu-maps.net/hot/1.0.0/`.
+To add a GeoNode server, include the protocol, domain, and port, for example `cybergis-script-rogue.sh prod server geonode ExampleName http://example.com`.  The url parameter will be appended with `/geoserver/wms` automatically.  To include other providers of WMS services use the wms flag instead, for example `cybergis-script-rogue.sh prod server wms ExampleName http://example.com/geoserver/wms`.  To include TMS services, such as HIU NextView High-Resolution Commercial Satellite Imagery services, provide the path to the capabilities document, for example, `cybergis-script-rogue.sh prod server tms ExampleName http://hiu-maps.net/hot/1.0.0/`.
 
 ```shell
 cybergis-script-rogue.sh prod server [geonode|wms|tms] <name> <url>
@@ -266,7 +266,7 @@ curl -u user:password 'http://example.com/geoserver/geogig/geonode:localRepoName
 
 ###Step 8
 
-To add Amazon Web Services (AWS) Simple Notification Services (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
+To add Amazon Web Services (AWS) [Simple Notification Services](https://aws.amazon.com/sns/) (SNS) post-commit hooks to repositories, you need to first install the python bindings for the AWS api tools and configure GeoNode's AWS settings.  The python binds for the AWS api tools is called Boto (see: [https://github.com/boto/boto](https://github.com/boto/boto)).  To install the bindings run:
 
 ```shell
 cybergis-script-rogue.sh prod aws
