@@ -61,15 +61,15 @@ cp cybergis-scripts.git/profile/cybergis-scripts.sh /etc/profile.d/
 The second step is to download and configure the OpenGeo Suite apt repo.  The following code block will download and configure the OpenGeo Suite apt repo.
 
 ```shell
-wget -qO - http://apt.opengeo.org/gpg.key | apt-key add -
-echo "deb http://apt.opengeo.org/suite/v4/ubuntu/ precise main" > /etc/apt/sources.list.d/opengeo.list
+wget -qO - http://apt.boundlessgeo.com/gpg.key | apt-key add -
+echo "deb http://apt.boundlessgeo.com/suite/v4/ubuntu/ precise main" > /etc/apt/sources.list.d/boundlessgeo.list
 apt-get update
 ```
 
 You can check that you added the OpenGeo Suite apt repo to your sources correctly, by checking the sources list with:
 
 ```shell
-cat /etc/apt/sources.list.d/opengeo.list | tail -n 4
+cat /etc/apt/sources.list.d/boundlessgeo.list | tail -n 4
 ```
 
 and by checking the apt cache with the following command.
